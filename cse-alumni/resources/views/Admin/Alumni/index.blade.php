@@ -20,7 +20,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Alumni</li>
+                        <li class="breadcrumb-item active">Alumnis</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,7 +31,31 @@
     <!-- Main content -->
     <section class="content">
 
-        
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">DataTable with default features</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" /></th>
+                            <th>Roll</th>
+                            <th>Name</th>
+                            <th>Batch</th>
+                            <th>Session</th>
+                            <th>BloodGroup</th>
+                            <th>Image</th>
+                            <th>Profession</th>
+                            <th>PhoneNumber</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
         <!-- /.card -->
 
         <!-- Default box -->
@@ -55,16 +79,16 @@
                             <th style="width: 5%">
                                 Roll
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 5%">
                                 Name
                             </th>
-                            <th style="width: 5%">
+                            <th style="width: 2%">
                                 Batch
                             </th>
-                            <th style="width: 5%">
+                            <th style="width: 2%">
                                 Session
                             </th>
-                            <th style="width: 5%">
+                            <th style="width: 2%">
                                 BloodGroup
                             </th>
                             
@@ -77,16 +101,16 @@
                             <th style="width: 5%">
                                 PhoneNumber
                             </th>
-                             <th style="width: 5%">
-                                EmailAddress
-                            </th>
-                            <th style="width: 40%" class="text-center">
+                            <th style="width:5%">
+                                Email
+                             </th>   
+                            <th style="width: 34%" class="text-center">
                                 Actions
                             </th>
 
                         </tr>
                     </thead>
-                    <tbody>
+                      <tbody>
                         @foreach ($fetchAllalumnis as $Alumni)
 
                         <tr>
@@ -161,3 +185,18 @@
 @endsection
 
 
+
+@section('scripts')
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+@endsection

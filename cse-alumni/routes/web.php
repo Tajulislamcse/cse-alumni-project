@@ -20,8 +20,9 @@ Auth::routes();
 
 Route::prefix('admin')->group(function()
 {
-	Route::get('/alumni/getAlumniJson', 'Admin\AlumniController@getAlumniJson');
-    Route::resource('/alumni','Admin\AlumniController');
+	//Route::get('/products/getProductsJson', 'Admin\ProductController@getProductsJson');
+	Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
+    Route::resource('/alumnis','Admin\AlumniController');
 
 });
 
