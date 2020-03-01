@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+        /***Alumni's binding***/
         $this->app->bind(
          'App\ViewModels\ICreateAlumniModel',
          'App\ViewModels\CreateAlumniModel'
@@ -35,6 +35,29 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
         'App\Repositories\IAlumniRepository',
         'App\Repositories\AlumniRepository'
+        );
+
+        /***techer's binding***/
+        $this->app->bind(
+         'App\ViewModels\ICreateTeacherModel',
+         'App\ViewModels\CreateTeacherModel'
+        );
+        $this->app->bind(
+        'App\ViewModels\IViewTeacherModel',
+        'App\ViewModels\ViewTeacherModel'
+        );
+        $this->app->bind(
+         'App\BusinessObjects\ITeacher',
+         'App\BusinessObjects\Teacher'
+        );
+        $this->app->bind(
+        'App\Services\ITeacherService',
+        'App\Services\TeacherService'
+        );
+
+        $this->app->bind(
+        'App\Repositories\ITeacherRepository',
+        'App\Repositories\TeacherRepository'
         );
     }
 

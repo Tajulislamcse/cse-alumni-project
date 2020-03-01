@@ -11,9 +11,9 @@ class Repository implements IRepository
 	{
 		return $this->model;
 	}
-	public function store($alumnisArray)
+	public function store($Array)
 	{
-		$this->model->create($alumnisArray);
+		$this->model->create($Array);
 	}
 	public function getAll()
 	{
@@ -23,10 +23,10 @@ class Repository implements IRepository
 	{
 		return $this->model->findOrFail($id);
 	}
-	public function update($alumniArr,$id)
+	public function update($Array,$id)
 	{
 		$record=$this->model->findOrFail($id);
-		$record->update($alumniArr);
+		$record->update($Array);
 	}
 
 	public function getWithFilter($field, $fieldValue, $orderColumn, $orderDirection, 
