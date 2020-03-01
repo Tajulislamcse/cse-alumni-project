@@ -45,10 +45,10 @@
                             <th>Name</th>
                             <th>Batch</th>
                             <th>Session</th>
-                            <th>BloodGroup</th>
+                            <th>BldGrp</th>
                             <th>Image</th>
                             <th>Profession</th>
-                            <th>PhoneNumber</th>
+                            <th>Ph_No</th>
                             <th>Email</th>
                             <th>Action</th>
                         </tr>
@@ -76,35 +76,35 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 5%">
+                            <th >
                                 Roll
                             </th>
-                            <th style="width: 5%">
+                            <th >
                                 Name
                             </th>
-                            <th style="width: 2%">
+                            <th >
                                 Batch
                             </th>
-                            <th style="width: 2%">
+                            <th >
                                 Session
                             </th>
-                            <th style="width: 2%">
-                                BloodGroup
+                            <th >
+                                BldGrp
                             </th>
                             
-                            <th style="width: 10%">
+                            <th >
                                 Image
                             </th>
-                            <th style="width: 10%">
+                            <th >
                                 Profession
                             </th>
-                            <th style="width: 5%">
-                                PhoneNumber
+                            <th >
+                                ph_no
                             </th>
-                            <th style="width:5%">
+                            <th >
                                 Email
                              </th>   
-                            <th style="width: 34%" class="text-center">
+                            <th  class="text-center">
                                 Actions
                             </th>
 
@@ -149,7 +149,7 @@
                                     </i>
                                     View
                                 </a>
-                                <form style="display:inline" action="/admin/alumni/{{ $Alumni->getId() }}/edit"
+                                <form style="display:inline" action="/admin/alumnis/{{ $Alumni->getId() }}/edit"
                                     method="GET">
                                     <button type="submit" class="btn btn-info btn-sm" href="#">
                                         <i class="fas fa-pencil-alt">
@@ -158,7 +158,7 @@
                                     </button>
                                 </form>
 
-                                <form style="display:inline" action="/admin/alumni/{{ $Alumni->getId() }}"
+                                <form style="display:inline" action="/admin/alumnis/{{ $Alumni->getId() }}"
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -187,16 +187,40 @@
 
 
 @section('scripts')
+
 <script>
-  $(function () {
-    $('#example1').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
+    $(function () {
+        $('#example1').DataTable({
+                "processing": true,
+                "serverSide": true,
+               // "ajax": "/admin/products/getProductsJson",
+                 "ajax": "/admin/alumnis/getAlumnisJson",
+                "columnDefs": [
+                    {
+                        "orderable": false,
+                        "targets": 0,
+                        "render": function (data, type, row) {
+                            return `<input type='checkbox' value='${data}'/>`;
+                        }
+                    },
+                   {
+                        "orderable": false,
+                        "targets": 10,
+                        "render": function (data, type, row) {
+                            return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/alumnis/${data}/edit'" value='${data}'>
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </button>
+                           <button type="submit" class="btn btn-danger btn-sm show-bs-modal" href="#" data-id='${data}' value='${data}'>
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </button>`;
+                        }
+                    }
+                ]
+            });
     });
-  });
 </script>
 @endsection

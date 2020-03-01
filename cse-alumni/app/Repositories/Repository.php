@@ -28,6 +28,15 @@ class Repository implements IRepository
 		$record=$this->model->findOrFail($id);
 		$record->update($alumniArr);
 	}
+
+	public function getWithFilter($field, $fieldValue, $orderColumn, $orderDirection, 
+        $itemCount)
+    {
+        return $this->model->where($field, $fieldValue)
+            ->orderBy($orderColumn, $orderDirection)
+            ->take($itemCount)
+            ->get();
+    }
 	public function delete($id)
 	{
 		$this->model->destroy($id);

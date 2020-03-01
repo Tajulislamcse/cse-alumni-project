@@ -32,6 +32,14 @@ class AlumniService implements IAlumniService
 		$this->_alumniRepository->delete($id);
 	}
 
+    
+      public function getAlumnis($searchText, $sortOrder, $pageIndex, $pageSize)
+    {
+        $alumnis = $this->_alumniRepository->getPagedAlumnis($searchText, $sortOrder, $pageIndex, $pageSize);
+        $totalCount = $this->_alumniRepository->getTotalAlumniCount();
+        $totalDisplayCount = $this->_alumniRepository->getTotalDisplayableAlumnis($searchText);
+        return new PagedData($alumnis, $totalCount, $totalDisplayCount);
+    }
 
 
 	 

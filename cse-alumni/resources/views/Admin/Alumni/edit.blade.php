@@ -30,7 +30,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="/admin/alumni/{{$fetchRecord->getId()}}" method="POST">
+            <form role="form" action="/admin/alumnis/{{$fetchRecord->getId()}}" method="POST">
                 @csrf
                 @method('PUT')
                

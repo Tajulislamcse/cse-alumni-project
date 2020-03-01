@@ -32,7 +32,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="/admin/alumni" method="POST">
+            <form role="form" action="/admin/alumnis" method="POST">
                 @csrf
                 <div class="card-body">
                      <div class="form-group">

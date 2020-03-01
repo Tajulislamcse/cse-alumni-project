@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\ViewModels\DataTablesModel;
 class AlumniController extends Controller
 {
     /**
@@ -39,7 +39,7 @@ class AlumniController extends Controller
     {
         $alumni=resolve('App\ViewModels\ICreateAlumniModel');
         $alumni->store();
-        return redirect('admin/alumni');
+        return redirect('admin/alumnis');
         //
     }
 
@@ -78,7 +78,7 @@ class AlumniController extends Controller
     {
         $objOfCreateAlumniModel=resolve('App\ViewModels\ICreateAlumniModel');
         $objOfCreateAlumniModel->update($id);
-        return redirect('admin/alumni');
+        return redirect('admin/alumnis');
     }
 
     /**
@@ -91,6 +91,16 @@ class AlumniController extends Controller
     {
         $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
         $objOfviewAlumniModel->delete($id);
-        return redirect('/admin/alumni');
+        return redirect('/admin/alumnis');
     }
+    
+      public function getAlumnisJson(Request $request)
+    {
+        $dataTablesModel = new DataTablesModel($request);
+        $model = resolve('App\ViewModels\IViewAlumniModel');
+        return $model->getAlumnisJsonData($dataTablesModel);
+    }
+    
+
+  
 }
