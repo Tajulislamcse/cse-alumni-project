@@ -22,7 +22,7 @@ class CreateAlumnisTable extends Migration
             $table->string('bloodgroup');
             $table->string('image');
             $table->string('profession');
-            $table->text('phonenumber');
+            $table->string('phonenumber');
             $table->string('email');
             $table->timestamps();
         });

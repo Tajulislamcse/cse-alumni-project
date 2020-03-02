@@ -94,7 +94,7 @@ class AlumniController extends Controller
         return redirect('/admin/alumnis');
     }
     
-      public function getAlumnisJson(Request $request)
+    public function getAlumnisJson(Request $request)
     {
         $dataTablesModel = new DataTablesModel($request);
         $model = resolve('App\ViewModels\IViewAlumniModel');
