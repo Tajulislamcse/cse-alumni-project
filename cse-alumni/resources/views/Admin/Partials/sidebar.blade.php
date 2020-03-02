@@ -38,13 +38,27 @@
                         <li class="nav-item">
                             <a href="/admin/alumnis/create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add Member</p>
+                                <p>Add Alumni</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/admin/alumnis" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Members</p>
+                                <p>Alumnis</p>
+                            </a>
+                        </li>
+                    </ul>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/teachers/create" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Teacher</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/teachers" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Teachers</p>
                             </a>
                         </li>
                     </ul>
