@@ -2,25 +2,16 @@
 namespace App\BusinessObjects;
 class Teacher extends Person implements ITeacher
 {   
-	private $id;
 	private $employeeId;
 	private $description;
 	private $researchInterest;
 	private $conferenceArticles;
-    
-    public function setId($id)
-    {
-    	$this->id=$id;
-    }
-    public function getId()
-    {
-    	return $this->id;
-    }
-	public function setEmployeeid($employeeId)
+
+	public function setEmployeeId($employeeId)
 	{
 		$this->employeeId=$employeeId;
 	}
-	public function getEmployeeid()
+	public function getEmployeeId()
 	{
 		return $this->employeeId;
 	}
@@ -32,20 +23,20 @@ class Teacher extends Person implements ITeacher
 	{
 		return $this->description;
 	}
-	public function setResearchinterest($researchInterest)
+	public function setResearchInterest($researchInterest)
 	{
 		$this->researchInterest=$researchInterest;
 	}
-	public function getResearchinterest()
+	public function getResearchInterest()
 	{
 		return $this->researchInterest;
 	}
-	public function setConferencearticles($conferenceArticles)
+	public function setConferencArticles($conferenceArticles)
 	{
 		$this->conferenceArticles=$conferenceArticles;
 
 	}
-    public function getConferencearticles()
+    public function getConferenceArticles()
     {
     	return $this->conferenceArticles;
     }

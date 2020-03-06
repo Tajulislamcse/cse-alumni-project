@@ -5,7 +5,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
 {
 	public function __construct()
 	{
-		$objOfModel=resolve('App\Models\Alumni');
+		$objOfModel=resolve('App\models\Alumni');
 		parent::setModel($objOfModel);
 	}
 	public function store($alumni)
@@ -67,7 +67,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
 
       public function getPagedAlumnis($searchText, $sortOrder, $pageIndex, $pageSize)
     {
-        $fetchAlldataFromDatabase = $this->getWithFilter('roll', $searchText, $sortOrder->columnName, $sortOrder->columnDirection, $pageSize);
+        $fetchAlldataFromDatabase = $this->getWithFilter('name', $searchText, $sortOrder->columnName, $sortOrder->columnDirection, $pageSize);
         return AlumniFactory::setValueToBoFromDatabase($fetchAlldataFromDatabase);
     }
     public function getTotalAlumniCount()
