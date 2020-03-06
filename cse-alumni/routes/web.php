@@ -29,7 +29,8 @@ Route::prefix('admin')->group(function()
 
 });
 
+Route::get('/home', 'FrontEnd\HomeController@show');
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
