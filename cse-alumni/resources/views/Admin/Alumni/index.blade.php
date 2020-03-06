@@ -31,8 +31,7 @@
     <!-- Main content -->
     <section class="content">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
@@ -58,12 +57,7 @@
                 </table>
             </div>
         </div>
-=======
-        
->>>>>>> parent of 7364561... commit before datables setup
-=======
-        
->>>>>>> parent of 7364561... commit before datables setup
+
         <!-- /.card -->
 
         <!-- Default box -->
@@ -87,8 +81,7 @@
                             <th >
                                 Roll
                             </th>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                             <th >
                                 Name
                             </th>
@@ -100,21 +93,8 @@
                             </th>
                             <th >
                                 BldGrp
-=======
-=======
->>>>>>> parent of 7364561... commit before datables setup
-                            <th style="width: 10%">
-                                Name
-                            </th>
-                            <th style="width: 5%">
-                                Batch
-                            </th>
-                            <th style="width: 5%">
-                                Session
-                            </th>
-                            <th style="width: 5%">
-                                BloodGroup
->>>>>>> parent of 7364561... commit before datables setup
+
+                          
                             </th>
                             
                             <th >
@@ -126,23 +106,13 @@
                             <th >
                                 ph_no
                             </th>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                             <th >
                                 Email
                              </th>   
-                            <th  class="text-center">
-=======
-=======
->>>>>>> parent of 7364561... commit before datables setup
-                             <th style="width: 5%">
-                                EmailAddress
-                            </th>
-                            <th style="width: 40%" class="text-center">
-<<<<<<< HEAD
->>>>>>> parent of 7364561... commit before datables setup
-=======
->>>>>>> parent of 7364561... commit before datables setup
+                           
+                            <th>
+
                                 Actions
                             </th>
 
@@ -223,8 +193,6 @@
 @endsection
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 @section('scripts')
 
@@ -264,7 +232,3 @@
     });
 </script>
 @endsection
-=======
->>>>>>> parent of 7364561... commit before datables setup
-=======
->>>>>>> parent of 7364561... commit before datables setup
