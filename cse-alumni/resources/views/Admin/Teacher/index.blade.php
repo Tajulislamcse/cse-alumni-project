@@ -15,12 +15,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Alumni Management</h1>
+                    <h1 class="m-0 text-dark">Teacher Management</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Alumni</li>
+                        <li class="breadcrumb-item active">Teachers</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,7 +31,6 @@
     <!-- Main content -->
     <section class="content">
 
-<<<<<<< HEAD
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
@@ -42,30 +41,27 @@
                     <thead>
                         <tr>
                             <th><input type="checkbox" /></th>
-                            <th>Roll</th>
+                            <th>EmId</th>
                             <th>Name</th>
-                            <th>Batch</th>
-                            <th>Session</th>
-                            <th>BldGrp</th>
                             <th>Image</th>
-                            <th>Profession</th>
-                            <th>Ph_No</th>
+                            <th>BldGrp</th>
+                            <th>PhNo</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th>Description</th>
+                            <th>Rsrch.</th>
+                            <th>ConfrnceAr.</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
-=======
-        
->>>>>>> parent of 7364561... commit before datables setup
         <!-- /.card -->
 
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Alumnis List:</h3>
+                <h3 class="card-title">Teachers List:</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -79,94 +75,54 @@
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
-                        <tr>
-                            <th >
-                                Roll
-                            </th>
-<<<<<<< HEAD
-                            <th >
-                                Name
-                            </th>
-                            <th >
-                                Batch
-                            </th>
-                            <th >
-                                Session
-                            </th>
-                            <th >
-                                BldGrp
-=======
-                            <th style="width: 10%">
-                                Name
-                            </th>
-                            <th style="width: 5%">
-                                Batch
-                            </th>
-                            <th style="width: 5%">
-                                Session
-                            </th>
-                            <th style="width: 5%">
-                                BloodGroup
->>>>>>> parent of 7364561... commit before datables setup
-                            </th>
-                            
-                            <th >
-                                Image
-                            </th>
-                            <th >
-                                Profession
-                            </th>
-                            <th >
-                                ph_no
-                            </th>
-<<<<<<< HEAD
-                            <th >
-                                Email
-                             </th>   
+                        <tr><th>EmployeeId</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>BldGrp</th>
+                            <th>PhNo</th>
+                            <th>Email</th>
+                            <th>Description</th>
+                            <th>ResearchInterest</th>
+                            <th>ConferenceArticles</th>
+                         
                             <th  class="text-center">
-=======
-                             <th style="width: 5%">
-                                EmailAddress
-                            </th>
-                            <th style="width: 40%" class="text-center">
->>>>>>> parent of 7364561... commit before datables setup
                                 Actions
                             </th>
 
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($fetchAllalumnis as $Alumni)
+                      <tbody>
+                        @foreach ($fetchAllTeachers as $Teacher)
 
                         <tr>
                             <td>
-                                {{ $Alumni->getRoll() }}
+                                {{ $Teacher->getEmployeeid() }}
                             </td>
                             <td>
-                                {{ $Alumni->getName() }}
+                                {{ $Teacher->getName() }}
                             </td>
 
                              <td>
-                                {{ $Alumni->getBatch() }}
+                                {{ $Teacher->getImage() }}
                             </td>
                             <td>
-                                {{ $Alumni->getSession() }}
+                                {{ $Teacher->getBloodgroup() }}
                             </td>
                             <td>
-                                {{ $Alumni->getBloodgroup() }}
+                                {{ $Teacher->getPhonenumber() }}
                             </td>
                             <td>
-                                {{ $Alumni->getImage() }}
+                                {{ $Teacher->getEmail() }}
                             </td>
                             <td>
-                                {{ $Alumni->getProfession() }}
+                                {{ $Teacher->getDescription() }}
                             </td>
                             
                             <td>
-                                {{ $Alumni->getPhonenumber() }}
+                                {{ $Teacher->getResearchinterest() }}
                             </td>
                             <td>
-                                {{ $Alumni->getEmail()  }}
+                                {{ $Teacher->getConferenceArticles()  }}
                              </td>   
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="#">
@@ -174,7 +130,7 @@
                                     </i>
                                     View
                                 </a>
-                                <form style="display:inline" action="/admin/alumnis/{{ $Alumni->getId() }}/edit"
+                                <form style="display:inline" action="/admin/teachers/{{ $Teacher->getId() }}/edit"
                                     method="GET">
                                     <button type="submit" class="btn btn-info btn-sm" href="#">
                                         <i class="fas fa-pencil-alt">
@@ -183,7 +139,7 @@
                                     </button>
                                 </form>
 
-                                <form style="display:inline" action="/admin/alumnis/{{ $Alumni->getId() }}"
+                                <form style="display:inline" action="/admin/teachers/{{ $Teacher->getId() }}"
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -210,7 +166,6 @@
 @endsection
 
 
-<<<<<<< HEAD
 
 @section('scripts')
 
@@ -220,7 +175,7 @@
                 "processing": true,
                 "serverSide": true,
                // "ajax": "/admin/products/getProductsJson",
-                 "ajax": "/admin/alumnis/getAlumnisJson",
+                 "ajax": "/admin/teachers/getTeachersJson",
                 "columnDefs": [
                     {
                         "orderable": false,
@@ -233,7 +188,7 @@
                         "orderable": false,
                         "targets": 10,
                         "render": function (data, type, row) {
-                            return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/alumnis/${data}/edit'" value='${data}'>
+                            return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/teachers/${data}/edit'" value='${data}'>
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 Edit
@@ -250,5 +205,5 @@
     });
 </script>
 @endsection
-=======
->>>>>>> parent of 7364561... commit before datables setup
+
+
