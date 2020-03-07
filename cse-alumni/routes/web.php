@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -30,4 +27,5 @@ Route::prefix('admin')->group(function()
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'FrontEnd\HomeController@show');
+Route::resource('/registration','FrontEnd\RegistrationController');
