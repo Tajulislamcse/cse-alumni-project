@@ -12,4 +12,6 @@ interface IAlumni extends IPerson
 	public function getSession();
 	public function setProfession($profession);
 	public function getProfession();
+	public function setPassword($password);
+	public function getPassword();
 }

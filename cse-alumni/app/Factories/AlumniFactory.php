@@ -35,6 +35,7 @@ class AlumniFactory
 		$alumni->setProfession($alumniInformation->profession);
 		$alumni->setPhonenumber($alumniInformation->phonenumber);
 		$alumni->setEmail($alumniInformation->email);
+		$alumni->setPassword($alumniInformation->password);
 		return $alumni;
 	}
 	public static function convertIntoBoFromDatabaseData($fetchRecord)

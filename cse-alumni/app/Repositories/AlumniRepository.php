@@ -19,7 +19,8 @@ class AlumniRepository extends Repository implements IAlumniRepository
           'image'=>$alumni->getImage(),
           'profession'=>$alumni->getProfession(),
           'phonenumber'=>$alumni->getPhonenumber(),
-          'email'=>$alumni->getEmail()
+          'email'=>$alumni->getEmail(),
+          'password'=>$alumni->getPassword()
 		 ];
 		 parent::store($alumniArray);
 	}

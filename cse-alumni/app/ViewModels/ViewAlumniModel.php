@@ -56,7 +56,7 @@ class ViewAlumniModel implements IViewAlumniModel
                 $alumniData[$i]->getBatch(),
                 $alumniData[$i]->getSession(),
                 $alumniData[$i]->getBloodgroup(),
-                $alumniData[$i]->getImage(),
+                 "/uploads/".$alumniData[$i]->getImage(),
                 $alumniData[$i]->getProfession(),
                 $alumniData[$i]->getPhonenumber(),
                 $alumniData[$i]->getEmail(),

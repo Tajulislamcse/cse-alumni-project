@@ -139,7 +139,7 @@
                                 {{ $Alumni->getBloodgroup() }}
                             </td>
                             <td>
-                                {{ $Alumni->getImage() }}
+                            <img src="{{asset('/uploads/'.$Alumni->getImage()) }}" width="100px">
                             </td>
                             <td>
                                 {{ $Alumni->getProfession() }}
@@ -201,7 +201,7 @@
         $('#example1').DataTable({
                 "processing": true,
                 "serverSide": true,
-               // "ajax": "/admin/products/getProductsJson",
+    
                  "ajax": "/admin/alumnis/getAlumnisJson",
                 "columnDefs": [
                     {
@@ -209,6 +209,14 @@
                         "targets": 0,
                         "render": function (data, type, row) {
                             return `<input type='checkbox' value='${data}'/>`;
+                        }
+                    },
+
+                    {
+                        "orderable": false,
+                        "targets": 6,
+                        "render": function (data, type, row) {
+                            return `<img style="width:100px" src='${data}'/>`;
                         }
                     },
                    {

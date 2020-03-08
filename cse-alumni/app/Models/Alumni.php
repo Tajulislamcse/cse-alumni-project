@@ -16,6 +16,7 @@ class Alumni extends Model
     'profession',
     'phonenumber',
     'email',
+    'password'
     
     ];
 }

@@ -7,6 +7,7 @@ class Alumni extends Person implements IAlumni
 	private $batch;
 	private $session;
 	private $profession;
+	private $password;
 
 	public function setId($id)
 	{
@@ -47,6 +48,14 @@ class Alumni extends Person implements IAlumni
 	public function getProfession()
 	{
 		return $this->profession;
+	}
+	public function setPassword($password)
+	{
+		$this->password=$password;
+	}
+	public function getPassword()
+	{
+		return $this->password;
 	}
 
 }

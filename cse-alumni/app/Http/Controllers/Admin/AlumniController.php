@@ -26,7 +26,7 @@ class AlumniController extends Controller
      */
     public function create()
     {
-        return view('Admin.Alumni.create');
+        return view('FrontEnd.pages.create');
     }
 
     /**

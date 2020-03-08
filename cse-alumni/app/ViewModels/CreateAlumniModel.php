@@ -16,6 +16,7 @@ class CreateAlumniModel implements ICreateAlumniModel
 	public $profession;
 	public $phonenumber;
 	public $email;
+	public $password;
 
 	public function __construct(IAlumniService $alumniService,Request $request)
 	{
@@ -28,16 +29,22 @@ class CreateAlumniModel implements ICreateAlumniModel
 		$this->_alumniService->store($sendFactory);
 	}
 	public function loadFields(Request $request)
-	{   $this->id=$request->id;
+	{ 
+        $storeName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('uploads'), $storeName);
+        
+
+	    $this->id=$request->id;
 		$this->roll=$request->roll;
 		$this->name=$request->name;
 		$this->batch=$request->batch;
 		$this->session=$request->session;
 		$this->bloodgroup=$request->bloodgroup;
-		$this->image=$request->image;
+		$this->image=$storeName;
 		$this->profession=$request->profession;
 		$this->phonenumber=$request->phonenumber;
 		$this->email=$request->email;
+		$this->password=$request->password;
 	}
 	public function update($id)
 	{

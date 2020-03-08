@@ -28,4 +28,4 @@ Route::prefix('admin')->group(function()
 
 
 Route::get('/', 'FrontEnd\HomeController@show');
-Route::resource('/registration','FrontEnd\RegistrationController');
+//Route::resource('/registration','FrontEnd\RegistrationController');
