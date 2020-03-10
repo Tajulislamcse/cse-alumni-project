@@ -68,7 +68,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
 
       public function getPagedAlumnis($searchText, $sortOrder, $pageIndex, $pageSize)
     {
-        $fetchAlldataFromDatabase = $this->getWithFilter('name', $searchText, $sortOrder->columnName, $sortOrder->columnDirection, $pageSize);
+        $fetchAlldataFromDatabase = $this->getWithFilter('roll', $searchText, $sortOrder->columnName, $sortOrder->columnDirection, $pageSize);
         return AlumniFactory::setValueToBoFromDatabase($fetchAlldataFromDatabase);
     }
     public function getTotalAlumniCount()
@@ -77,7 +77,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
     }
     public function getTotalDisplayableAlumnis($searchText)
     {
-        return count($this->getWithFilter('name', $searchText, 'name', 'asc', 10));
+        return count($this->getWithFilter('roll', $searchText, 'roll', 'asc', 3));
     }
 
 }

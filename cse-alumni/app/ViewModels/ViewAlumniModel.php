@@ -29,7 +29,7 @@ class ViewAlumniModel implements IViewAlumniModel
     {
         $records = $this->_alumniService->getAlumnis(
             $dataTablesModel->getSearchText(),
-            $dataTablesModel->getSortOrder(['id','roll', 'name','batch', 'session','bloodgroup','image','profession', 'phonenumber', 'email','roll','id']),
+            $dataTablesModel->getSortOrder(['id','roll', 'name','image','id']),
             
             $dataTablesModel->getPageIndex(),
             $dataTablesModel->getPageSize()
@@ -53,13 +53,9 @@ class ViewAlumniModel implements IViewAlumniModel
                 $alumniData[$i]->getId(),
                 $alumniData[$i]->getRoll(),
                 $alumniData[$i]->getName(),
-                $alumniData[$i]->getBatch(),
-                $alumniData[$i]->getSession(),
-                $alumniData[$i]->getBloodgroup(),
+             
                  "/uploads/".$alumniData[$i]->getImage(),
-                $alumniData[$i]->getProfession(),
-                $alumniData[$i]->getPhonenumber(),
-                $alumniData[$i]->getEmail(),
+          
                 $alumniData[$i]->getId()
             ];
         }

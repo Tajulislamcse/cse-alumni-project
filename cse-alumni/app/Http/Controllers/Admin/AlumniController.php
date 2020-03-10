@@ -16,7 +16,7 @@ class AlumniController extends Controller
     {
         $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
         $fetchAllalumnis=$objOfviewAlumniModel->getAll();
-        return view('Admin.Alumni.index',compact('fetchAllalumnis'));
+        return view('FrontEnd.pages.index',compact('fetchAllalumnis'));
     }
 
     /**
