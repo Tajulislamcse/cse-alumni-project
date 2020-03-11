@@ -53,9 +53,10 @@ class ViewAlumniModel implements IViewAlumniModel
                 $alumniData[$i]->getId(),
                 $alumniData[$i]->getRoll(),
                 $alumniData[$i]->getName(),
+
              
                  "/uploads/".$alumniData[$i]->getImage(),
-          
+    
                 $alumniData[$i]->getId()
             ];
         }

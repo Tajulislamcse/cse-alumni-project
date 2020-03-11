@@ -30,9 +30,9 @@ class CreateAlumniModel implements ICreateAlumniModel
 	}
 	public function loadFields(Request $request)
 	{ 
-        $storeName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-        $request->file('image')->move(public_path('uploads'), $storeName);
-        
+        $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+         $request->file('image')->move(public_path('uploads'), $imageName);
+         $this->image = $imageName;
 
 	    $this->id=$request->id;
 		$this->roll=$request->roll;
@@ -40,7 +40,7 @@ class CreateAlumniModel implements ICreateAlumniModel
 		$this->batch=$request->batch;
 		$this->session=$request->session;
 		$this->bloodgroup=$request->bloodgroup;
-		$this->image=$storeName;
+		//$this->image=$request->image;
 		$this->profession=$request->profession;
 		$this->phonenumber=$request->phonenumber;
 		$this->email=$request->email;

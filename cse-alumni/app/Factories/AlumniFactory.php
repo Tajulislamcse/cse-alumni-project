@@ -18,6 +18,7 @@ class AlumniFactory
 			$obj->setProfession($alumni['profession']);
 			$obj->setPhonenumber($alumni['phonenumber']);
 			$obj->setEmail($alumni['email']);
+			$obj->setPassword($alumni['password']);
 			$alumnis[]=$obj;
 		}
 		return $alumnis;
@@ -36,6 +37,7 @@ class AlumniFactory
 		$alumni->setPhonenumber($alumniInformation->phonenumber);
 		$alumni->setEmail($alumniInformation->email);
 		$alumni->setPassword($alumniInformation->password);
+
 		return $alumni;
 	}
 	public static function convertIntoBoFromDatabaseData($fetchRecord)
@@ -51,6 +53,7 @@ class AlumniFactory
 			$obj2->setProfession($fetchRecord['profession']);
 			$obj2->setPhonenumber($fetchRecord['phonenumber']);
 			$obj2->setEmail($fetchRecord['email']);
+			$obj2->setPassword($fetchRecord['password']);
 			return $obj2;
 	}
 }

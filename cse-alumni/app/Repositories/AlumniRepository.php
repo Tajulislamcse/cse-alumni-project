@@ -20,7 +20,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
           'profession'=>$alumni->getProfession(),
           'phonenumber'=>$alumni->getPhonenumber(),
           'email'=>$alumni->getEmail(),
-          'password'=>$alumni->getPassword()
+          'password'=>$alumni->getPassword(),
 		 ];
 		 parent::store($alumniArray);
 	}
@@ -46,7 +46,8 @@ class AlumniRepository extends Repository implements IAlumniRepository
           'image'=>$senFactory->getImage(),
           'profession'=>$senFactory->getProfession(),
           'phonenumber'=>$senFactory->getPhonenumber(),
-          'email'=>$senFactory->getEmail()
+          'email'=>$senFactory->getEmail(),
+          'password'=>$senFactory->getPassword()
 		];
 		parent::update($alumniArr,$id);
 	}
