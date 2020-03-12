@@ -64,7 +64,7 @@ class AlumniController extends Controller
     {
          $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
          $fetchRecord=$objOfviewAlumniModel->get($id);
-         return view('FrontEnd.pages.edit',compact('fetchRecord'));
+         return view('FrontEnd.pages.details',compact('fetchRecord'));
     }
 
     /**
