@@ -12,6 +12,30 @@
       <div class="col-lg-5">
         <h1 class="font-weight-light">Profession</h1>
         <p>{{$fetchRecord->getProfession()}}</p>
+    
+
+    <form style="display:inline" action="/job/{{ $fetchRecord->getId() }}/edit"
+                                    method="GET">
+                                    
+   
+
+  
+                  
+                   
+
+
+
+          <button type="submit" class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </button>
+                                </form>
+
+
+
+
+
         
       </div>
       <!-- /.col-md-4 -->

@@ -13,7 +13,7 @@
 
 
 Auth::routes();
-
+Route::resource('/job','Alumni\JobController');
 
 Route::prefix('admin')->group(function()
 {
