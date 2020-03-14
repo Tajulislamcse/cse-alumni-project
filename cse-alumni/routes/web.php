@@ -1,7 +1,7 @@
 <?php
 
 use App\Notifications\JobChange;
-use App\Alumni;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +19,9 @@ Route::get('/mail',function()
 );
 
 Auth::routes();
-//Route::resource('/job','Alumni\JobController');
-Route::get('/job/edit','Alumni\JobController@edit');
-Route::post('/job/update','Alumni\JobController@update');
+Route::resource('/job','Alumni\JobController');
+//Route::get('/job/edit','Alumni\JobController@edit');
+//Route::post('/job/update','Alumni\JobController@update');
 
 Route::prefix('admin')->group(function()
 {
