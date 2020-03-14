@@ -14,7 +14,7 @@
         <p>{{$fetchRecord->getProfession()}}</p>
     
 
-    <form style="display:inline" action="/job/{{ $fetchRecord->getId() }}/edit"
+    <form style="display:inline" action="/job/edit/{{ $fetchRecord->getId() }}"
                                     method="GET">
                                     
    
