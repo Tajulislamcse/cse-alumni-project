@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Freelancer - Start Bootstrap Theme</title>
+  <title>CSE Alumni</title>
    @include('FrontEnd.partials.css')
    @include('FrontEnd.partials.js')
  </head> 
