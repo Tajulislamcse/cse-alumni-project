@@ -21,7 +21,7 @@ Auth::routes();
 Route::prefix('admin')->group(function()
 {
 
-	Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
+	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
     Route::resource('/alumnis','Admin\AlumniController');
 	
    

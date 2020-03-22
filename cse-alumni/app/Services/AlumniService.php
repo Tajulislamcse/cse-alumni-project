@@ -2,7 +2,7 @@
 namespace App\Services;
 use App\BusinessObjects\IAlumni;
 use App\Repositories\IAlumniRepository;
-use App\ViewModels\PagedData;
+//use App\ViewModels\PagedData;
 
 class AlumniService implements IAlumniService
 {
@@ -23,6 +23,8 @@ class AlumniService implements IAlumniService
 	{
 		return $this->_alumniRepository->get($id);
 	}
+
+	/*
 	public function update($sendFactory,$id)
 	{
 		$this->_alumniRepository->update($sendFactory,$id);
@@ -31,16 +33,9 @@ class AlumniService implements IAlumniService
 	{
 		$this->_alumniRepository->delete($id);
 	}
-
+    */
     
-      public function getAlumnis($searchText, $sortOrder, $pageIndex, $pageSize)
-    {
-        $alumnis = $this->_alumniRepository->getPagedAlumnis($searchText, $sortOrder, $pageIndex, $pageSize);
-        $totalCount = $this->_alumniRepository->getTotalAlumniCount();
-        $totalDisplayCount = $this->_alumniRepository->getTotalDisplayableAlumnis($searchText);
-        return new PagedData($alumnis, $totalCount, $totalDisplayCount);
-    }
-
+    
 
 	 
 }

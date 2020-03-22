@@ -17,31 +17,26 @@ class Repository implements IRepository
 	}
 	public function getAll()
 	{
-		return $this->model->all();
+		return $this->model->where('roll','LIKE','__5%')->get();
 	}
 	public function get($id)
 	{
 		return $this->model->findOrFail($id);
 	}
+	/*
 	public function update($alumniArr,$id)
 	{
 		$record=$this->model->findOrFail($id);
 		$record->update($alumniArr);
 	}
-
-	public function getWithFilter($field, $fieldValue, $orderColumn, $orderDirection, 
-        $itemCount)
-    {
-        return $this->model->where($field, $fieldValue)
-            ->orderBy($orderColumn, $orderDirection)
-            ->take($itemCount)
-            ->get();
-    }
+     */
+	
+    /*
 	public function delete($id)
 	{
 		$this->model->destroy($id);
 	}
-
+    */
 
 	
 }

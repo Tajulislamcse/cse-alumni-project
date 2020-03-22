@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ViewModels\DataTablesModel;
+//use App\ViewModels\DataTablesModel;
 class AlumniController extends Controller
 {
     /**
@@ -74,12 +74,14 @@ class AlumniController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /*
     public function update(Request $request, $id)
     {
         $objOfCreateAlumniModel=resolve('App\ViewModels\ICreateAlumniModel');
         $objOfCreateAlumniModel->update($id);
         return redirect('admin/alumnis');
     }
+    */
 
     /**
      * Remove the specified resource from storage.
@@ -87,19 +89,17 @@ class AlumniController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /*
     public function destroy($id)
     {
         $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
         $objOfviewAlumniModel->delete($id);
         return redirect('/admin/alumnis');
     }
+
+    */
     
-    public function getAlumnisJson(Request $request)
-    {
-        $dataTablesModel = new DataTablesModel($request);
-        $model = resolve('App\ViewModels\IViewAlumniModel');
-        return $model->getAlumnisJsonData($dataTablesModel);
-    }
+    
     
 
   

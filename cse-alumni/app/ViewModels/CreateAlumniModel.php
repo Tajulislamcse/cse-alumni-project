@@ -46,10 +46,11 @@ class CreateAlumniModel implements ICreateAlumniModel
 		$this->email=$request->email;
 		$this->password=$request->password;
 	}
+	/*
 	public function update($id)
 	{
 		$sendFactory=AlumniFactory::setValueToBo($this);
 		$this->_alumniService->update($sendFactory,$id);
 	}
-	
+	*/
 }

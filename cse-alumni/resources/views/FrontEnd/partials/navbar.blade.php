@@ -24,7 +24,7 @@
          
              
 
-                <a href="#" class="dropdown-item">SECOND BATCH</a>
+                <a href="/admin/alumnis" class="dropdown-item">SECOND BATCH</a>
              </div>         
                       
           </li>

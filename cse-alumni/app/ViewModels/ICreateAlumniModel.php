@@ -3,5 +3,5 @@ namespace App\ViewModels;
 interface ICreateAlumniModel
 {
 	public function store();
-	public function update($id);
+	//public function update($id);
 }

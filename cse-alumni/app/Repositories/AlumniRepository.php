@@ -34,7 +34,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
 		$fetchRecord=parent::get($id);
 		return AlumniFactory::convertIntoBoFromDatabaseData($fetchRecord);
 	}
-
+/*
 	public function update($senFactory,$id)
 	{
 		$alumniArr=[
@@ -55,30 +55,12 @@ class AlumniRepository extends Repository implements IAlumniRepository
 	{
 		parent::delete($id);
 	}
-
-	 public function getWithFilter($field, $fieldValue, $orderColumn, $orderDirection, $itemCount)
-    {
-        return $this->model->where($field, 'like', '%'.$fieldValue.'%')
-            ->orderBy($orderColumn, $orderDirection)
-            ->take($itemCount)
-            ->get();
-    }
+*/
+	 
 
 
 
 
-      public function getPagedAlumnis($searchText, $sortOrder, $pageIndex, $pageSize)
-    {
-        $fetchAlldataFromDatabase = $this->getWithFilter('roll', $searchText, $sortOrder->columnName, $sortOrder->columnDirection, $pageSize);
-        return AlumniFactory::setValueToBoFromDatabase($fetchAlldataFromDatabase);
-    }
-    public function getTotalAlumniCount()
-    {
-        return count($this->getAll());
-    }
-    public function getTotalDisplayableAlumnis($searchText)
-    {
-        return count($this->getWithFilter('roll', $searchText, 'roll', 'asc', 3));
-    }
+   
 
 }

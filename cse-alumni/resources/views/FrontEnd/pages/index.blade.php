@@ -26,7 +26,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" /></th>
+                           
                             <th>Roll</th>
                             <th>Name</th>
                            
@@ -35,6 +35,30 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+                     <tbody>
+                         @foreach ($fetchAllalumnis as $Alumni)
+
+                        <tr>
+                            <td>
+                                {{ $Alumni->getRoll() }}
+                            </td>
+                            <td>
+                                {{ $Alumni->getName() }}
+                            </td>
+
+                            <td>
+                            <img src="{{asset('/uploads/'.$Alumni->getImage()) }}" width="100px">
+                            </td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" href="/admin/alumnis/{{$Alumni->getId()}}/edit">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    Details
+                                </a>
+                            </td>
+                            </tr>
+                            @endforeach        
+                     </tbody>
                 </table>
             </div>
         </div>
@@ -59,32 +83,10 @@
 <script>
     $(function () {
         $('#example1').DataTable({
-                "processing": true,
-                "serverSide": true,
-    
-                 "ajax": "/admin/alumnis/getAlumnisJson",
-                "columnDefs": [
-                   
-
-                    {
-                        "orderable": false,
-                        "targets": 3,
-                        "render": function (data, type, row) {
-                            return `<img style="width:100px" src='${data}'/>`;
-                        }
-                    },
-                   {
-                        "orderable": false,
-                        "targets": 4,
-                        "render": function (data, type, row) {
-                            return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/alumnis/${data}/edit'" value='${data}'>
-                               
-                                Details
-                            </button>
-                        `;
-                        }
-                    }
-                ]
+            'columnDefs': [ {
+        'targets': [2,3], // column index (start from 0)
+        'orderable': false, // set orderable false for selected columns
+     }]
             });
     });
 </script>
