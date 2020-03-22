@@ -23,9 +23,11 @@ Route::prefix('admin')->group(function()
 
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
     Route::resource('/alumnis','Admin\AlumniController');
-	
+    	
    
 });
+
+Route::get('/batch/{batchNo}','FrontEnd\BatchController@index');
 
 
 

@@ -1,3 +1,4 @@
+  
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger">CSE AlUMNI</a>
@@ -20,11 +21,14 @@
           <li class="nav-item mx-0 mx-lg-1 dropdown">
             <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown"  href="#">ALUMNI LIST</a>
             <div class="dropdown-menu">
-               <a href="/admin/alumnis" class="dropdown-item">FIRST BATCH</a>
+                <?php $batches=App\Models\Alumni::distinct()->get(['batch']); ?>
+                   @foreach($batches as $batch)
+
+               <a href="{{url('/batch',$batch->batch)}}" class="dropdown-item">{{$batch->batch}} batch</a>
+                    @endforeach
          
              
 
-                <a href="/admin/alumnis" class="dropdown-item">SECOND BATCH</a>
              </div>         
                       
           </li>

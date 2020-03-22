@@ -24,9 +24,9 @@ class AlumniRepository extends Repository implements IAlumniRepository
 		 ];
 		 parent::store($alumniArray);
 	}
-	public function getAll()
+	public function getAll($batchNo)
 	{
-		$fetchAlldataFromDatabase=parent::getAll();
+		$fetchAlldataFromDatabase=parent::getAll($batchNo);
 		return AlumniFactory::setValueToBoFromDatabase($fetchAlldataFromDatabase);
 	}
 	public function get($id)

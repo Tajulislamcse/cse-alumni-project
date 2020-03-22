@@ -15,9 +15,9 @@ class Repository implements IRepository
 	{
 		$this->model->create($alumnisArray);
 	}
-	public function getAll()
+	public function getAll($batchNo)
 	{
-		return $this->model->where('roll','LIKE','__5%')->get();
+		return $this->model->where('batch',$batchNo)->get();
 	}
 	public function get($id)
 	{

@@ -15,9 +15,9 @@ class AlumniService implements IAlumniService
 	{
 		$this->_alumniRepository->store($alumni);
 	}
-	public function getAll()
+	public function getAll($batchNo)
 	{
-		return $this->_alumniRepository->getAll();
+		return $this->_alumniRepository->getAll($batchNo);
 	}
 	public function get($id)
 	{

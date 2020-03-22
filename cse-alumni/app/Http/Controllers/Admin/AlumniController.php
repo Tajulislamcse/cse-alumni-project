@@ -12,12 +12,15 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    //public function index($id)
+    //{
+    
+        /*
         $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
         $fetchAllalumnis=$objOfviewAlumniModel->getAll();
         return view('FrontEnd.pages.index',compact('fetchAllalumnis'));
-    }
+        */
+   // }
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +42,7 @@ class AlumniController extends Controller
     {
         $alumni=resolve('App\ViewModels\ICreateAlumniModel');
         $alumni->store();
-        return redirect('admin/alumnis');
+        return redirect('/');
         //
     }
 
