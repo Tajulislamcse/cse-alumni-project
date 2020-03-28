@@ -14,7 +14,15 @@
     <!-- Content Header (Page header) -->
   
     <!-- /.content-header -->
-<h3 class="text-center">First batch alumni list</h3>
+<h3 class="text-center">you are viewing @php
+    $i=1;
+    foreach ($fetchAllalumnis as $batch)
+            {
+                echo $batch->getBatch();
+              if($i==1)
+              break;
+            }
+    @endphp batch alumni list</h3>
     <!-- Main content -->
     <section class="content">
 
@@ -50,7 +58,7 @@
                             <img src="{{asset('/uploads/'.$Alumni->getImage()) }}" width="100px">
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="/admin/alumnis/{{$Alumni->getId()}}/edit">
+                                <a class="btn btn-primary btn-sm" href="/admin/alumnis/{{$Alumni->getId()}}">
                                     <i class="fas fa-folder">
                                     </i>
                                     Details

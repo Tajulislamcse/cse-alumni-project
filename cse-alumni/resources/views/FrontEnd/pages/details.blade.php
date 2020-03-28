@@ -17,15 +17,7 @@
     <form style="display:inline" action="/job/{{ $fetchRecord->getId() }}/edit"
                                     method="GET">
                                     
-   
-
-  
-                  
-                   
-
-
-
-          <button type="submit" class="btn btn-info btn-sm" href="#">
+   <button style="height:50px" type="submit" class="btn btn-info btn-sm" href="#">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit

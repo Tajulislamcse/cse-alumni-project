@@ -8,3 +8,4 @@
 
   <!-- Theme CSS -->
    <link rel="stylesheet" href="{{asset('dist/css/frontend.min.css')}}">
+   <link rel="stylesheet" href="{{asset('dist/css/registrationForm.css')}}">
