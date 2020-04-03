@@ -44,7 +44,7 @@ class CreateAlumniModel implements ICreateAlumniModel
 		$this->profession=$request->profession;
 		$this->phonenumber=$request->phonenumber;
 		$this->email=$request->email;
-		$this->password=$request->password;
+		$this->password=bcrypt($request->password);
 	}
 	/*
 	public function update($id)

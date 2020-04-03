@@ -4,13 +4,8 @@ namespace App\Http\Controllers\Alumni;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Notifications\JobChange;
-use Illuminate\Support\Facades\Notification;
-//use App\User;
 
-
-class JobController extends Controller
+class AlumniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +14,7 @@ class JobController extends Controller
      */
     public function index()
     {
-      // return Alumni::where('roll','LIKE','__1%')->get(); //
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('FrontEnd.pages.create');
     }
 
     /**
@@ -40,6 +35,9 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+        $alumni=resolve('App\ViewModels\ICreateAlumniModel');
+        $alumni->store();
+        return redirect('admin/alumnis');
         //
     }
 
@@ -51,7 +49,9 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+         $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
+         $fetchRecord=$objOfviewAlumniModel->get($id);
+         return view('FrontEnd.pages.details',compact('fetchRecord'));
     }
 
     /**
@@ -62,11 +62,7 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-      // $alumni=new Alumni();
-         $fetchrecordbyid=User::find($id);
-       //return $fetchrecordbyid->profession;
-
-       return view('alumni.pages.editJob',compact('fetchrecordbyid'));
+        //
     }
 
     /**
@@ -78,20 +74,7 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-         $forupdate=Alumni::find($id);
-        //$forupdate->name=$request->name;
-        $forupdate->profession=$request->profession;
-        $forupdate->save();
-        //$alumni=new Alumni();
-        $alumnis=Alumni::all();
-        foreach ($alumnis as  $onealumni) {
-            Notification::route('mail', $onealumni->email)
-        
-               ->notify(new JobChange($onealumni));
-           }
-        return redirect('/');
-
+        //
     }
 
     /**
@@ -104,5 +87,4 @@ class JobController extends Controller
     {
         //
     }
-
 }

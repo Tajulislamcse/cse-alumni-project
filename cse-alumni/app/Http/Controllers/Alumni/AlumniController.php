@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Alumni;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use App\ViewModels\DataTablesModel;
+
 class AlumniController extends Controller
 {
     /**
@@ -12,12 +12,11 @@ class AlumniController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*
+
+
     public function index()
     {
-        $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
-        $fetchAllalumnis=$objOfviewAlumniModel->getAll();
-        return view('FrontEnd.pages.index',compact('fetchAllalumnis'));
+        //
     }
 
     /**
@@ -38,6 +37,9 @@ class AlumniController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
         $alumni=resolve('App\ViewModels\ICreateAlumniModel');
         $alumni->store();
         return redirect('/');
@@ -50,11 +52,27 @@ class AlumniController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+   
     public function show($id)
-    {
+
+    { 
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+
+     */
+
+
+  
+        
+
+
          $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
          $fetchRecord=$objOfviewAlumniModel->get($id);
-         return view('FrontEnd.pages.details',compact('fetchRecord'));
+         return view('alumni.pages.details',compact('fetchRecord'));
     }
 
     /**
@@ -65,7 +83,7 @@ class AlumniController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -75,14 +93,10 @@ class AlumniController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*
     public function update(Request $request, $id)
     {
-        $objOfCreateAlumniModel=resolve('App\ViewModels\ICreateAlumniModel');
-        $objOfCreateAlumniModel->update($id);
-        return redirect('admin/alumnis');
+        //
     }
-    */
 
     /**
      * Remove the specified resource from storage.
@@ -90,18 +104,8 @@ class AlumniController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*
     public function destroy($id)
     {
-        $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
-        $objOfviewAlumniModel->delete($id);
-        return redirect('/admin/alumnis');
+        //
     }
-
-    */
-    
-    
-    
-
-  
 }

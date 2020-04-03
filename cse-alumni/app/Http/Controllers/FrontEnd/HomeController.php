@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function show()
     {
-    	return view('FrontEnd.pages.home');
+    	return view('alumni.pages.home');
     }
 }

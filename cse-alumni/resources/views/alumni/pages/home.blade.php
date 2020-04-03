@@ -1,5 +1,5 @@
 
-@extends('FrontEnd.layouts.master')
+@extends('alumni.layouts.master')
   <!-- Masthead -->
   @section('main-content')
   <header class="masthead bg-primary text-white text-center">

@@ -1,35 +1,44 @@
 <?php
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 
-Route::resource('/job','Alumni\JobController');
-//Route::get('/job/edit','Alumni\JobController@edit');
-//Route::post('/job/update','Alumni\JobController@update');
-Auth::routes();
-Route::prefix('admin')->group(function()
+
+
+
+Auth::routes(); // Authentication routes
+Route::get('/home','HomeController@index');
+
+ 
+
+   
+//Admin's routes ends from here
+
+Route::prefix('alumni')->group(function()
 {
 
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
-    Route::resource('/alumnis','Admin\AlumniController');
+    Route::resource('/alumnis','Alumni\AlumniController');
 	
    
-});
-Route::get('/batch/{batchNo}','FrontEnd\BatchController@index');
+
+
+
+    Route::get('/{batchNo}','Alumni\BatchController@index');
+    Route::resource('/job','Alumni\JobController');
+   
+	
+
+	
+   
+}); //Alumni's routes ends from here
+
+
 
 
 
 
 Route::get('/', 'FrontEnd\HomeController@show');
+
 

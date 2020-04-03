@@ -1,26 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\Alumni;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Alumni;
 class BatchController extends Controller
 {
+
+	
     
    public function index($batchNo)
    {
 
-
+  
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+   **/
  $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
  $fetchAllalumnis=$objOfviewAlumniModel->getAll($batchNo);
-  //$fetchAllalumnis;
- return view('FrontEnd.pages.index',compact('fetchAllalumnis'));
+ return view('.pages.index',compact('fetchAllalumnis'));
 
 
-
-
-   //	$fetchAllalumnis=Alumni::where('batch',$id)->get();
-//return view('FrontEnd.pages.index',compact('fetchAllalumnis'));
    }
 }

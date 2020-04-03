@@ -1,4 +1,4 @@
-@extends('FrontEnd.layouts.master')
+@extends('alumni.layouts.master')
 @section('main-content')
 
 
@@ -7,7 +7,7 @@
 <div class="content-wrapper">
  
   <h2 class="text-center">Job Edit form</h2>
-     <form role="form" action="/job/{{$fetchrecordbyid->id}}" method="POST">
+     <form role="form" action="/alumni/job/{{$fetchrecordbyid->id}}" method="POST">
                 @csrf
                 @method('PUT')
 

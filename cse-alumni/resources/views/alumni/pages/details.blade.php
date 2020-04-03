@@ -1,5 +1,5 @@
 
-@extends('FrontEnd.layouts.master')
+@extends('alumni.layouts.master')
 @section('main-content')
 <div class="container">
 
@@ -14,7 +14,7 @@
         <p>{{$fetchRecord->getProfession()}}</p>
     
 
-    <form style="display:inline" action="/job/{{ $fetchRecord->getId() }}/edit"
+    <form style="display:inline" action="/alumni/job/{{ $fetchRecord->getId() }}/edit"
                                     method="GET">
                                     
    <button style="height:50px" type="submit" class="btn btn-info btn-sm" href="#">

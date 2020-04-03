@@ -5,7 +5,7 @@ class AlumniRepository extends Repository implements IAlumniRepository
 {
 	public function __construct()
 	{
-		$objOfModel=resolve('App\models\Alumni');
+		$objOfModel=resolve('App\models\User');
 		parent::setModel($objOfModel);
 	}
 	public function store($alumni)

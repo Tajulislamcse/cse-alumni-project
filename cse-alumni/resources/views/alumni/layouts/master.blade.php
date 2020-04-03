@@ -9,12 +9,12 @@
   <meta name="author" content="">
 
   <title>CSE Alumni</title>
-   @include('FrontEnd.partials.css')
-   @include('FrontEnd.partials.js')
+   @include('alumni.partials.css')
+   @include('alumni.partials.js')
  </head> 
   <body id="page-top">
    
-   @include('FrontEnd.partials.navbar')	
+   @include('alumni.partials.navbar')	
    
        @yield('main-content')
        @yield('scripts')

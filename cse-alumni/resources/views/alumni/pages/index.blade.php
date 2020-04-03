@@ -1,4 +1,4 @@
-@extends('FrontEnd.layouts.master')
+@extends('alumni.layouts.master')
 
 
 
@@ -58,7 +58,9 @@
                             <img src="{{asset('/uploads/'.$Alumni->getImage()) }}" width="100px">
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="/admin/alumnis/{{$Alumni->getId()}}">
+
+
+                                <a class="btn btn-primary btn-sm" href="/alumni/alumnis/{{$Alumni->getId()}}">
                                     <i class="fas fa-folder">
                                     </i>
                                     Details

@@ -1,5 +1,5 @@
 
-@extends('FrontEnd.layouts.master')
+@extends('alumni.layouts.master')
 @section('main-content')
 
 <body>
@@ -12,7 +12,7 @@
                     <h2 class="title">Alumni Registration Form</h2>
                 </div>
                 <div class="card-body">
-                    <form role="form" action="/admin/alumnis" method="POST" enctype="multipart/form-data">
+                    <form role="form" action="/alumni/alumnis" method="POST" enctype="multipart/form-data">
                 @csrf    
 
 
