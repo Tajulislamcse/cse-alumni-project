@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    public function users()
+       public function users()
     {
-        return $this->hasMany('App\Models\User');
-      
+        return $this
+            ->belongsToMany('App\Models\User')
+            ->withTimestamps();
     }
 }

@@ -16,17 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-          'role_id',
-          'roll',
-          'name',
-          'batch',
-          'session',
-          'bloodgroup',
-          'image',
-          'profession',
-          'phonenumber', 
-          'email',
-          'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -47,11 +37,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role()
+    public function roles()
     {
-        return $this->belongsTo('App\Models\Role');
-            
-   }
-   
+        return $this
+            ->belongsToMany('App\Models\Role')
+            ->withTimestamps();
+    }
 
+public function hasRole($role)
+{
+  if ($this->roles()->where('name', $role)->first()) {
+    return true;
+  }
+  return false;
+}
 }

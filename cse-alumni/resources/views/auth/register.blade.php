@@ -1,164 +1,77 @@
+@extends('layouts.app')
 
-@extends('alumni.layouts.master')
-@section('main-content')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Register') }}</div>
 
-<body>
-  <div class="container">
-    <div class="wrapper">
-    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-        <div class="wrapper wrapper--w790">
-            <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Alumni Registration Form</h2>
-                </div>
                 <div class="card-body">
-                    <form role="form" action="/alumni/alumnis" method="POST" enctype="multipart/form-data">
-                @csrf    
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
 
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="form-row">
-                            <div class="name">Roll</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="roll" placeholder="please enter your roll" required>
-                                </div>
-                            </div>
-                        </div>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                           <div class="form-row">
-                            <div class="name">Name</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="name" placeholder="please enter your name" required>
-                                </div>
-                            </div>
-                        </div>
-                       
-                         <div class="form-row">
-                            <div class="name">Batch</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <div class="input--style-5" style="width: 700px">
-                                        <select name="batch" required>
-                                            <option disabled="disabled" selected="selected">please select batch from the option</option>
-                                            <option value="cse-1st">cse-1st</option>
-                                            <option value="cse-2nd">cse-2nd</option>
-                                            <option value="cse-3rd">cse-3rd</option>
-                                            <option value="cse-4th">cse-4th</option>
-                                            <option value="cse-5th">cse-5th</option>
-                                            <option value="cse-6th">cse-6th</option>
-                                            <option value="cse-7th">cse-7th</option>
-                                             
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-
-                            <div class="form-row">
-                            <div class="name">Session</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <div class="input--style-5" style="width: 700px">
-                                        <select name="session" required>
-                                            <option disabled="disabled" selected="selected">please select session from the option</option>
-                                            <option value="2008-2009">2008-2009</option>
-                                            <option value="2009-2010">2009-2010</option>
-                                            <option value="2010-2011">2010-2011</option>
-                                            <option value="2011-2012">2011-2012</option>
-                                            <option value="2012-2013">2012-2013</option>
-                                            <option value="2013-2014">2013-2014</option>
-                                            <option value="2014-2015">2014-2015</option>
-                                       
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         
-
-                            <div class="form-row">
-                            <div class="name">BloodGroup</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <div class="input--style-5" style="width: 700px">
-                                        <select name="bloodgroup" required>
-                                            <option disabled="disabled" selected="selected">please select bloodgroup from the option</option>
-                                            <option value="O+">O+</option>
-                                            <option value="AB+">AB+</option>
-                                            <option value="B+">B+</option>
-                                            <option value="A+">A+</option>
-                                            <option value="O-">O-</option>
-                                            <option value="AB-">AB-</option>
-                                            <option value="B-">B-</option>
-                                            <option value="A-">A-</option>
-                                       
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                                </div>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                         <div class="form-row">
-                            <div class="name">image</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="file" name="image">
-                                </div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Profession</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="profession">
-                                </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                       <div class="form-row">
-                            <div class="name">PhoneNumber</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="phonenumber">
-                                </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                         
-                            <div class="form-row">
-                            <div class="name">Email</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="email">
-                                </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
                             </div>
-                        </div>
-                         
-                            <div class="form-row">
-                            <div class="name">Password</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="password">
-                                </div>
-                            </div>
-                        </div>
-                      
-                       
-                        <div class="pull-right">
-                            <button style=" margin-left:115px;
-                             width: 510px;" class="btn btn--pill btn--green" type="submit">submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-  </div>
-
+</div>
 @endsection
