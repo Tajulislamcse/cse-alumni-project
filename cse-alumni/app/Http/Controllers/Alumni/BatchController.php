@@ -21,7 +21,7 @@ class BatchController extends Controller
    **/
  $objOfviewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
  $fetchAllalumnis=$objOfviewAlumniModel->getAll($batchNo);
- return view('.pages.index',compact('fetchAllalumnis'));
+ return view('alumni.pages.index',compact('fetchAllalumnis'));
 
 
    }
