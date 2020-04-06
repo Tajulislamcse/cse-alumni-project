@@ -20,7 +20,14 @@ class UserTableSeeder extends Seeder
         
         
         $admin = new user();
+        $admin->roll='11508028';
         $admin->name = 'admin';
+        $admin->batch='CSE-7th';
+        $admin->session='2014-15';
+        $admin->bloodgroup='o+';
+        $admin->image='3.jpg';
+        $admin->profession='brainstation';
+        $admin->phonenumber='01767704837';
         $admin->email = 'tajulislam8028@gmail.com';
         $admin->password = bcrypt('11508028');
         $admin->save();
@@ -28,9 +35,16 @@ class UserTableSeeder extends Seeder
 
 
         $alumni = new User();
+        $alumni->roll='11508045';
         $alumni->name = 'alumni';
+        $alumni->batch='CSE-7th';
+        $alumni->session='2014-15';
+        $alumni->bloodgroup='o+';
+        $alumni->image='3.jpg';
+        $alumni->profession='brainstation';
+        $alumni->phonenumber='01750368459';
         $alumni->email = 'simulislam8028@gmail.com';
-        $alumni->password = bcrypt('11508028');
+        $alumni->password = bcrypt('11508045');
         $alumni->save();
         $alumni->roles()->attach($role_alumni);
     }

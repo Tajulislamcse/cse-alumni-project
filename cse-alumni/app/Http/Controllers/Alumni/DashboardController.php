@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Alumni;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    
+    //
      public function index()
     {
         return view('alumni.dashboard');
@@ -17,6 +18,4 @@ class DashboardController extends Controller
         $this->middleware('auth');
         $this->middleware('role:alumni');
     }
-
-
 }

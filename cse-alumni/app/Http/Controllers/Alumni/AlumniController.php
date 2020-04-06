@@ -42,7 +42,7 @@ class AlumniController extends Controller
 
         $alumni=resolve('App\ViewModels\ICreateAlumniModel');
         $alumni->store();
-        return redirect('/');
+        //return redirect('/');
         //
     }
 

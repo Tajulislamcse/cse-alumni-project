@@ -17,7 +17,7 @@ class Repository implements IRepository
 	}
 	public function getAll($batchNo)
 	{
-		return $this->model->where('batch',$batchNo)->get();
+		return $this->model->where('batch',$batchNo)->except('admin')->get();
 	}
 	public function get($id)
 	{

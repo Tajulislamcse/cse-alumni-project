@@ -2,7 +2,6 @@
 
 
 
-
 <!-- Stored in resources/views/about.blade.php -->
 
 

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     //
-        //Index method for Admin Controller
-    public function index()
+    
+     public function index()
     {
         return view('admin.home');
     }
@@ -18,7 +19,4 @@ class DashboardController extends Controller
         $this->middleware('auth');
         $this->middleware('role:admin');
     }
-
-    //Index method for SuperAdmin Controller
-   
 }
