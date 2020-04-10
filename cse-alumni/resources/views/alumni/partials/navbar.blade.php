@@ -13,7 +13,7 @@
             <li class="nav-item mx-0 mx-lg-1 dropdown">
             <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">MEMBERSHIP</a>
             <div class="dropdown-menu">
-               <a href="http://localhost:8000/register" class="dropdown-item">REGISTRATION</a>
+               <a href="/register" class="dropdown-item">REGISTRATION</a>
              </div>          
                       
           </li>
@@ -45,7 +45,7 @@
 
           
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:8000/login">LOGIN</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">LOGIN</a>
           </li>
         </ul>
       </div>
