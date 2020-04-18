@@ -26,7 +26,8 @@ Route::prefix('alumni')->group(function()
 {
 
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
-	Route::get('/dashboard', 'Alumni\DashboardController@index');
+	//Route::get('/dashboard', 'Alumni\DashboardController@index');
+	Route::resource('/committee','Alumni\CommitteeMemberController');
    
 
     Route::resource('/alumnis','Alumni\AlumniController');

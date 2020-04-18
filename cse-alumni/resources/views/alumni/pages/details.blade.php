@@ -10,6 +10,7 @@
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
+        
         <h1 class="font-weight-light">Profession</h1>
         <p>{{$fetchRecord->getProfession()}}</p>
     

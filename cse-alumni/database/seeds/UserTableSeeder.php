@@ -15,6 +15,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {   
         $role_admin = Role::where('name', 'admin')->first();
+        $role_committee = Role::where('name', 'committee')->first();
         $role_alumni = Role::where('name', 'alumni')->first();
         
         
@@ -51,15 +52,31 @@ class UserTableSeeder extends Seeder
 
         $alumni = new User();
         $alumni->roll='11508044';
-        $alumni->name = 'test';
+        $alumni->name = 'testCommittee';
         $alumni->batch='CSE-7th';
         $alumni->session='2014-15';
         $alumni->bloodgroup='o+';
         $alumni->image='3.jpg';
         $alumni->profession='brainstation';
         $alumni->phonenumber='01750368459';
-        $alumni->email = 'test@gmail.com';
-        $alumni->password = bcrypt('11508045');
+        $alumni->email = 'testCommittee@gmail.com';
+        $alumni->password = bcrypt('11508044');
+        $alumni->save();
+        $alumni->roles()->attach($role_committee);
+
+
+
+        $alumni = new User();
+        $alumni->roll='11508047';
+        $alumni->name = 'testAlumni';
+        $alumni->batch='CSE-7th';
+        $alumni->session='2014-15';
+        $alumni->bloodgroup='o+';
+        $alumni->image='3.jpg';
+        $alumni->profession='brainstation';
+        $alumni->phonenumber='01750368459';
+        $alumni->email = 'testAlumni@gmail.com';
+        $alumni->password = bcrypt('11508047');
         $alumni->save();
         $alumni->roles()->attach($role_alumni);
     }
