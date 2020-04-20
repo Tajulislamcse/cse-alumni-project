@@ -75,7 +75,7 @@ img{margin-top: 25px;width:150px}
                  @endif
                  @endforeach
      </div>
-      @php $i=1; if($i==1) break;
+      @php $i=1; if($i==1) break;@endphp
         
       @endif
       @endforeach  
