@@ -4,6 +4,7 @@
 <style>
 h4{background-color:#2C3E50;text-align: center; color:white;padding:10px;margin-top: 25px}
 img{margin-top: 25px;width:150px}
+h2{text-align: center;}
 </style>
 <div class="container-fluid" style="margin-top:25px">
     <div class="row">
@@ -14,52 +15,62 @@ img{margin-top: 25px;width:150px}
         
     </div>
 
-   
-@foreach($getAll as $committee)
-    @if($committee->designation=="president")
-            <div class="row">
+               <div class="row">
                  <div class="col-md-12">
                     <h4>President</h4>
                  </div>
              </div>
+           
+            @php if(count($getPresident)==null) echo" <h2>There is no record exist for president</h2>"@endphp
+         
              <div class="row">
-                 <div class="col-md-12">
-                    <img class="img-fluid rounded mb-4 mb-lg-0"  src="{{asset('/uploads/'.$committee->image)}}" alt="">
-                     <p>{{$committee->name}}</p>
+                @foreach($getPresident as $p)
+
+                 <div class="col-md-3">
+                    <img class="img-fluid rounded mb-4 mb-lg-0"  src="{{asset('/uploads/'.$p->image)}}" alt="">
+                     <p>{{$p->name}}</p>
                  </div>
+                 @endforeach
             </div>
-    @elseif($committee->designation=="secretary")
-            <div class="row">
+    
+
+
+               <div class="row">
                <div class="col-md-12">
                   <h4>Secretary</h4>
                 </div>
             </div>
+            
+             @php if(count($getSecretary)==null) echo" <h2>There is no record exist for secretary</h2>"@endphp
+           
            <div class="row">
-             <div class="col-md-12">
-                <img class="img-fluid rounded mb-4 mb-lg-0" src="{{asset('/uploads/'.$committee->image)}}" alt="">
-                 <p>{{$committee->name}}</p>
+            @foreach($getSecretary as $s)
+             <div class="col-md-3">
+                <img class="img-fluid rounded mb-4 mb-lg-0" src="{{asset('/uploads/'.$s->image)}}" alt="">
+                 <p>{{$s->name}}</p>
              </div>
+             @endforeach
          </div>
-    @else
-            <div class="row">
+    
+                  <div class="row">
                      <div class="col-md-12">
                         <h4>Members</h4>
                       </div>
                     </div>
+               @php if(count($getMember)==null) echo" <h2>There is no record exist for member</h2>"@endphp    
            <div class="row">
-                     @foreach($getAll as $committees)
-                        @if($committees->designation=="member")
+                     @foreach($getMember as $committees)
+                       
                           <div class="col-md-3">
                             <img class="img-fluid rounded mb-4 mb-lg-0" src="{{asset('/uploads/'.$committees->image)}}" alt="">
                              <p>{{$committees->name}}</p>
                            </div>
-                        @endif
+                        
                     @endforeach
-             </div>
-      @php $i=1; if($i==1) break;@endphp
+            </div>
+   
         
-      @endif
-      @endforeach  
+     
 </div>
 
 

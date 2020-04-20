@@ -23,10 +23,11 @@ class CommitteeMemberController extends Controller
     
     public function index()
     {
-        //
-          $getAll=Committee::all();
         
-       return view('committee.index',compact('getAll'));
+          $getMember=Committee::where('designation','member')->get();
+          $getPresident=Committee::where('designation','president')->get();
+           $getSecretary=Committee::where('designation','secretary')->get();
+       return view('committee.index',compact('getMember','getPresident','getSecretary'));
         
     }
 
