@@ -60,6 +60,7 @@ class CommitteeMemberController extends Controller
         $committee->profession=$request->profession;
         $committee->email=$request->email;
         $committee->save(); 
+        return redirect('alumni/committee');
 
     }
 
