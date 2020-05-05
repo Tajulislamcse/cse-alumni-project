@@ -17,17 +17,15 @@ class CommitteeMemberController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('role:committee');
+    // Alternativly
+    $this->middleware('auth');// ['only' => ['create', 'store', 'edit', 'delete']]);      
+    $this->middleware('role:committee');
     }
     
     public function index()
     {
         
-          $getMember=Committee::where('designation','member')->get();
-          $getPresident=Committee::where('designation','president')->get();
-           $getSecretary=Committee::where('designation','secretary')->get();
-       return view('committee.index',compact('getMember','getPresident','getSecretary'));
+
         
     }
 
@@ -61,7 +59,7 @@ class CommitteeMemberController extends Controller
         $committee->profession=$request->profession;
         $committee->email=$request->email;
         $committee->save(); 
-        return redirect('alumni/committee');
+        return redirect('alumni/test');
 
     }
 

@@ -28,6 +28,8 @@ Route::prefix('alumni')->group(function()
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
 	//Route::get('/dashboard', 'Alumni\DashboardController@index');
 	Route::resource('/committee','Alumni\CommitteeMemberController');
+	Route::get('/test','Alumni\CommitteeController@index');
+
    
 
     Route::resource('/alumnis','Alumni\AlumniController');
