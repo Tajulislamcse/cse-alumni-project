@@ -7,5 +7,7 @@
        <link rel="stylesheet" href="{{asset('dist/css/alumniDetails.css')}}">
 
   <!-- Theme CSS -->
-   <link rel="stylesheet" href="{{asset('dist/css/frontend.min.css')}}">
+   <link rel="stylesheet" href="{{asset('dist/css/frontend.css')}}">
+   <link rel="stylesheet" href="{{asset('dist/css/committee.css')}}">
+
    <link rel="stylesheet" href="{{asset('dist/css/registrationForm.css')}}">
