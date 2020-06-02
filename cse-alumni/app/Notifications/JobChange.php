@@ -7,19 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
+
 class JobChange extends Notification implements ShouldQueue
 {
     use Queueable;
     public $alumni;
+    public $old;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($onealumni)
+    public function __construct($alumni,$old)
     {
-        $this->alumni=$onealumni;
+        $this->alumni=$alumni;
+        $this->old=$old;
     }
 
     /**
@@ -42,10 +45,11 @@ class JobChange extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                     ->greeting('Hello,'.$this->alumni->name)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                     ->greeting('Hello,'.$notifiable->name)
+                    ->line($this->alumni->name.'('.$this->alumni->batch.')'.' changed his job.')
+                    ->line('New Job:'.$this->alumni->profession)
+                    ->line('Old Job:'.$this->old);
+                    
     }
 
     /**

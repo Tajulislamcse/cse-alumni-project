@@ -6,7 +6,7 @@
     <!-- Heading Row -->
     <div class="row align-items-center my-5">
       <div class="col-lg-7">
-        <img class="img-fluid rounded mb-4 mb-lg-0"  src="{{asset('/uploads/'.$fetchRecord->getImage()) }}" alt="">
+        <img class="img-fluid rounded mb-4 mb-lg-0" style=""  src="{{asset('/uploads/'.$fetchRecord->getImage()) }}" alt="">
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
@@ -52,9 +52,7 @@
              <p class="card-text"><b>Batch:</b>{{$fetchRecord->getBatch()}}</p>
             
           </div>
-          <div class="card-footer">
-            
-          </div>
+         
         </div>
       </div>
       <!-- /.col-md-4 -->
@@ -66,9 +64,7 @@
               <p class="card-text"><b>Session:</b>{{$fetchRecord->getSession()}}</p>
               
           </div>
-          <div class="card-footer">
         
-          </div>
         </div>
       </div>
       <!-- /.col-md-4 -->
@@ -79,9 +75,7 @@
             <p class="card-text"><b>PhoneNumber:</b>{{$fetchRecord->getPhonenumber()}}</p>
               <p class="card-text"><b>Email:</b>{{$fetchRecord->getEmail()}}</p>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">update</a>
-          </div>
+
         </div>
       </div>
       <!-- /.col-md-4 -->

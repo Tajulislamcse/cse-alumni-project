@@ -79,17 +79,23 @@ class JobController extends Controller
     public function update(Request $request, $id)
     {
         
-         $forupdate=Alumni::find($id);
-        //$forupdate->name=$request->name;
-        $forupdate->profession=$request->profession;
-        $forupdate->save();
+         $user=User::find($id);
+         $old=$user->profession;
+         $user->profession=$request->profession;
+         $user->save();
         //$alumni=new Alumni();
-        $alumnis=Alumni::all();
-        foreach ($alumnis as  $onealumni) {
-            Notification::route('mail', $onealumni->email)
         
-               ->notify(new JobChange($onealumni));
-           }
+
+         $roleName='alumni';
+         $users=User::whereHas('roles', function ($q) use ($roleName) {
+         $q->where([
+         'name'=>$roleName
+         ]);
+         })->where('id', '!=', $id)
+         ->get();
+        
+        Notification::send($users,new JobChange($user,$old));
+           
         return redirect('/');
 
     }
