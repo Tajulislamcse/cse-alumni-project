@@ -35,7 +35,7 @@
              <li class="nav-item mx-0 mx-lg-1 dropdown">
                 <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">ALUMNI COMMITTEE</a>
                 <div class="dropdown-menu">
-                   <a href="alumni/test" class="dropdown-item">MEMBERS PROFILE</a>
+                   <a href="/alumni/test" class="dropdown-item">MEMBERS PROFILE</a>
                  
                    <a href="/alumni/committee/create" class="dropdown-item">ACCESSING INFORMATION</a>
                           

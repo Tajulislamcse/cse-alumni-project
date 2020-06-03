@@ -1,87 +1,122 @@
 
 @extends('alumni.layouts.master')
 @section('main-content')
+
+
+
 <div class="container">
+    <div class="team-single">
+        <div class="row card">
+            <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
+                <div class="team-single-img">
+                     <img src="{{asset('/uploads/'. $fetchRecord->getImage())}}" style="width:339px;border: 80px solid #f1f1f1;">
+                </div>
+                <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
+                    <h1 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600" style="padding: 10px">{{$fetchRecord->getName()}}</h1>
+                    <h4 class="sm-width-95 sm-margin-auto">  <i class="fas fa-briefcase"></i>
+                                        <strong class="margin-10px-left text-orange">Profession:</strong><h3>{{$fetchRecord->getProfession()}}</h3></h4>
 
-    <!-- Heading Row -->
-    <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <img class="img-fluid rounded mb-4 mb-lg-0" style=""  src="{{asset('/uploads/'.$fetchRecord->getImage()) }}" alt="">
-      </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
-        
-        <h1 class="font-weight-light">Profession</h1>
-        <p>{{$fetchRecord->getProfession()}}</p>
-    
+                </div>
+            </div>
 
-    <form style="display:inline" action="/alumni/job/{{ $fetchRecord->getId() }}/edit"
-                                    method="GET">
-                                    
-   <button style="height:50px" type="submit" class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </button>
-                                </form>
+            <div class="col-lg-8 col-md-7" style="margin-top: 78px">
+                <div class="team-single-text padding-50px-left sm-no-padding-left">
+
+                    <div class="contact-info-section margin-40px-tb">
+                        <ul class="list-style9 no-margin">
+                            <li>
+
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        
+
+                                        <strong class="margin-10px-left text-orange">Roll:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$fetchRecord->getRoll()}}</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        
+                                        <strong class="margin-10px-left text-green">Batch:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$fetchRecord->getBatch()}}</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        
+                                        <strong class="margin-10px-left text-lightred">Session:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$fetchRecord->getSession()}}</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <img src="{{asset('/dist/img/bloodicon.jpg')}}" style="width:23px ">
+                                        <strong class="margin-10px-left text-green">bloodgroup:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$fetchRecord->getBloodgroup()}}</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-mobile-alt text-purple"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>{{$fetchRecord->getPhonenumber()}}</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-envelope text-pink"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p><a href="mailto:{{$fetchRecord->getEmail()}}">{{$fetchRecord->getEmail()}}</a></p>
+</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                   
 
 
+                </div>
+            </div>
 
+            <div class="col-md-12">
 
-
-        
-      </div>
-      <!-- /.col-md-4 -->
-    </div>
-    <!-- /.row -->
-
-    <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-      <div class="card-body">
-        <h2 class="text-white m-0">{{$fetchRecord->getName()}}'s Profile</h2>
-      </div>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-           
-            <p class="card-text"><b>Roll:</b>{{$fetchRecord->getRoll()}}</p>
-             <p class="card-text"><b>Batch:</b>{{$fetchRecord->getBatch()}}</p>
-            
-          </div>
-         
+            </div>
         </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-           
-            <p class="card-text"><b>Bloodgroup:</b>{{$fetchRecord->getBloodgroup()}}</p>
-              <p class="card-text"><b>Session:</b>{{$fetchRecord->getSession()}}</p>
-              
-          </div>
-        
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            
-            <p class="card-text"><b>PhoneNumber:</b>{{$fetchRecord->getPhonenumber()}}</p>
-              <p class="card-text"><b>Email:</b>{{$fetchRecord->getEmail()}}</p>
-          </div>
-
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-
     </div>
-    <!-- /.row -->
+</div>
 
-  </div>
-  @endsection
+
+@endsection
