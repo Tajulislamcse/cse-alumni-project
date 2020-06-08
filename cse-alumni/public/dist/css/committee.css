@@ -1,0 +1,96 @@
+
+
+p{text-align: center;font-size: 20px}
+h3{text-align: center;
+    background-color:#2C3E50;
+    color: white;
+
+}
+.card {
+    background: none repeat scroll 0 0 #FFFFFF;
+    
+    box-shadow: 2px 2px 7px #CCCCCC;
+    font-size: 13px;
+    
+}
+.padding_program {
+    margin-right: -7px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.padding_bottom_program {
+    padding-top: 10px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.faculty-name-fonts {
+    color: #0077B5;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.faculty-pic {
+    margin-left: -15px;
+}
+.faculty_Modals {
+    cursor: pointer;
+}
+.faculty_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 16.42857px;
+}
+a:hover {
+  color: #4782b2;
+}
+a {
+    transition: all 0.1s ease-in-out 0s;
+}
+.model-own {
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.modal-header .close {
+margin-top: -9px;
+margin-left: auto;
+order: 2;
+}
+.close {
+    
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: black;
+    text-shadow: 0 1px 0 white;
+    opacity: 0.2;
+}
+.modal-footer {
+    margin-top: 20px;
+    padding: 19px 20px 20px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.modal-body {
+    position: relative;
+    padding: 20px;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+.btn-default {
+    color:white;
+    background-color: #3276B1;
+    border-color: #cccccc;
+}

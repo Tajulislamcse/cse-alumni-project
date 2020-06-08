@@ -17,6 +17,7 @@
    @include('alumni.partials.navbar')	
    
        @yield('main-content')
+    @include('alumni.partials.footer')    
        @yield('scripts')
   </body>
  </html> 

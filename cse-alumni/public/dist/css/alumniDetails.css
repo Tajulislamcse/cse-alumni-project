@@ -14,10 +14,10 @@ body{
 }
 .card {
     background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #CCCCCC;
+   
     box-shadow: 2px 2px 7px #CCCCCC;
     font-size: 13px;
-    padding: 10px 15px;
+
 }
 
 .font-size38 {

@@ -2,112 +2,25 @@
 
 @section('main-content')
 <style>
-p{background-color:#2C3E50;text-align: center; color:white;padding:10px;margin-top: 25px;font-size: 19px;}
-img{width:100px;height: 100px}
-h2{text-align: center;}
-.card {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #CCCCCC;
-    box-shadow: 2px 2px 7px #CCCCCC;
-    font-size: 13px;
-    padding: 10px 15px;
-}
-.padding_program {
-    margin-right: -7px;
-    padding-bottom: 10px;
-    padding-right: 30px;
-    padding-left: 30px;
-}
-.padding_bottom_program {
-    padding-top: 10px;
-    margin-left: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-.faculty-name-fonts {
-    color: #0077B5;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 24px;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.faculty-pic {
-    margin-left: -15px;
-}
-.faculty_Modals {
-    cursor: pointer;
-}
-.faculty_title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #333333;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.modal-header {
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
-    min-height: 16.42857px;
-}
-a:hover {
-  color: #4782b2;
-}
-a {
-    transition: all 0.1s ease-in-out 0s;
-}
-.model-own {
-    font-size: 15px;
-    text-align: center;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.modal-header .close {
-margin-top: -9px;
-margin-left: auto;
-order: 2;
-}
-.close {
-    
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 1;
-    color: black;
-    text-shadow: 0 1px 0 white;
-    opacity: 0.2;
-}
-.modal-footer {
-    margin-top: 20px;
-    padding: 19px 20px 20px;
-    text-align: right;
-    border-top: 1px solid #e5e5e5;
-}
-.modal-body {
-    position: relative;
-    padding: 20px;
-}
-.margin-bottom-10 {
-    margin-bottom: 10px;
-}
-.btn-default {
-    color:white;
-    background-color: #3276B1;
-    border-color: #cccccc;
-}
+  img{  width:100px;height: 100px}
+  .card{padding: 10px 15px;
+  border: 1px solid #CCCCCC;}
 </style>
-<div class="container-fluid" style="background-color:#F8F8F8;margin-top:25px">
+
+<div class="container-fluid" style="background-color:#F8F8F8;">
     <div class="row">
-         <div class="col-md-12">
-            <h3 style="background-color:pink;text-align: center; color:black;padding:5px">Alumni Association Committee Members</h3>
+         <div class="col-md-12 mt-4">
+            <h3 class="p-2" style="background-color: pink;color: inherit;">Alumni Association Committee Members</h3>
          </div>
     </div>
 
                <div class="row">
                  <div class="col-md-12">
-                    <p>President</p>
+                    <h3 class="p-2">President</h3>
                  </div>
                </div>
            
-            @if(count($getPresident)==null)  <h2>There is no record exist for president</h2>
+            @if(count($getPresident)==null)  <p>There is no record exist for president</p>
             
             @else
 
@@ -289,11 +202,11 @@ order: 2;
 
                <div class="row">
                  <div class="col-md-12">
-                    <p>Secretary</p>
+                    <h3 class="p-2">Secretary</h3>
                  </div>
              </div>
            
-             @if(count($getSecretary)==null) <h2>There is no record exist for Secretary</h2>
+             @if(count($getSecretary)==null) <p>There is no record exist for secretary</p>
              
 
              @else       
@@ -486,27 +399,12 @@ order: 2;
 
                             
 
-
-
-
-
-
-             
-             
-    
-
-
-        
-
-               
-         
-     
-                  <div class="row">
+                <div class="row">
                      <div class="col-md-12">
-                        <p>Members</p>
+                        <h3 class="p-2">Members</h3>
                       </div>
                     </div>
-                  @if(count($getMember)==null)  <h2>There is no record exist for members</h2>
+                  @if(count($getMember)==null)  <p class="pb-3">There are no record exist for members</p>
                   @else    
                  <div class="row">
                      @foreach($getMember as $m)

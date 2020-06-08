@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
   
     <!-- /.content-header -->
-<h3 class="text-center">you are viewing @php
+<p class="text-center">you are viewing @php
     $i=1;
     foreach ($fetchAllalumnis as $batch)
             {
@@ -21,7 +21,7 @@
               if($i==1)
               break;
             }
-    @endphp batch alumni list</h3>
+    @endphp batch alumni list</p>
     <!-- Main content -->
     <section class="content">
 
