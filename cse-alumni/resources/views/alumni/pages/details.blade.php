@@ -1,4 +1,3 @@
-
 @extends('alumni.layouts.master')
 @section('main-content')
 
@@ -9,12 +8,71 @@
         <div class="row card">
             <div class="col-md-5 bg-light-gray text-center py-5">
                 <div>
-                     <img src="{{asset('/uploads/'. $fetchRecord->getImage())}}" style="width:200px;">
+                  <img src="{{asset('/uploads/'. $fetchRecord->getImage())}}" style="width:200px;">
                 </div>
                 <div>
-                    <h1 class="margin-10px-bottom p-2 font-size24 md-font-size22 sm-font-size20 font-weight-600">{{$fetchRecord->getName()}}</h1>
-                    <h4 class="sm-width-95 sm-margin-auto">  <i class="fas fa-briefcase"></i>
-                                        <strong class="margin-10px-left text-orange">Profession:</strong><p class="p-2">{{$fetchRecord->getProfession()}}</p></h4>
+                    <h2 class="margin-10px-bottom p-2 font-size24 md-font-size22 sm-font-size20 font-weight-600">{{$fetchRecord->getName()}}
+                    </h2>
+                        <h4 class="sm-width-95 sm-margin-auto">  <i class="fas fa-briefcase"></i><strong class="margin-10px-left p-1 text-orange">Profession:</strong><p class="p-2">{{$fetchRecord->getProfession()}}</p>
+                        </h4>
+                        @if(Auth::id()==$fetchRecord->getId())
+
+                      <!-- Modal Button--> 
+
+                        <button  type="submit" class="btn btn-info btn-sm" data-myprofession=" {{$fetchRecord->getProfession()}}"  href="#" data-toggle="modal" data-target="#edit">
+                                      editJob
+                        </button>
+                       <!--/Modal Button--> 
+                                
+                        @endif 
+
+                      
+
+
+                        <!--Modal starts from here-->
+
+                        
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              
+                            <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                                <h4 class="modal-title model-own" id="myModalLabel">Job edit form of &nbsp;&nbsp; <span class="faculty_title">{{$fetchRecord->getName()}}</span></h4>
+
+                            </div>
+
+                                    
+                                <form action="/alumni/job/{{$fetchRecord->getId()}}" method="post">
+                                      @csrf
+                                      @method('patch')
+                              <div class="modal-body">
+                                
+
+                                          <div class="form-group">
+                                            <label for="profession">Profession</label>
+                                            <input type="text" class="form-control" id="profession"name="profession"
+                                            >
+                                            
+                                          </div>
+
+                                        
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                              </form>
+                            </div>
+                            </div>
+                            </div>
+
+
 
                 </div>
             </div>
@@ -98,7 +156,7 @@
                                     </div>
                                     <div class="col-md-7">
                                         <p><a href="mailto:{{$fetchRecord->getEmail()}}">{{$fetchRecord->getEmail()}}</a></p>
-</p>
+
                                     </div>
                                 </div>
                             </li>
@@ -118,3 +176,23 @@
 
 
 @endsection
+
+    @section('scripts')
+
+    <script>
+
+     $('#edit').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) 
+      var profession = button.data('myprofession') 
+      //var description = button.data('mydescription') 
+      //var cat_id = button.data('catid') 
+      var modal = $(this)
+      modal.find('.modal-body #profession').val(profession);
+     // modal.find('.modal-body #des').val(description);
+    //modal.find('.modal-body #cat_id').val(cat_id);
+})
+                           
+    </script>
+    @endsection                        
+
+

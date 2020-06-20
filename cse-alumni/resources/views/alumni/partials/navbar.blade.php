@@ -58,7 +58,7 @@
                             @endif
                         @else
                         
-                                  <li class="nav-item mx-0 mx-lg-1 dropdown">
+                       <li class="nav-item mx-0 mx-lg-1 dropdown">
                         <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">  {{ Auth::user()->name }} <span class="caret"></span></a>
                                 
                       
@@ -78,7 +78,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                          </li>
                         @endguest
                     
         </ul>

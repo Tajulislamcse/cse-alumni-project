@@ -60,14 +60,7 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-      // $alumni=new Alumni();
-         $fetchrecordbyid=User::find($id);
-       //return $fetchrecordbyid->profession;
 
-       return view('alumni.pages.editJob',compact('fetchrecordbyid'));
-    }
 
     /**
      * Update the specified resource in storage.
