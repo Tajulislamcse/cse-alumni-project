@@ -13,6 +13,55 @@
  b, strong {
     font-weight: bolder;
 }
+/*news and events css*/
+.news-section .nav-tabs .nav-link.active {
+    border: 1px solid #418bca;
+}
+
+.news-section .nav-tabs .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 0;
+}
+.news-section .tab-content {
+    background: #f0f9ff;
+    padding: 10px;
+    color: #000000;
+    min-height: 495px;
+}
+
+.news-section .nav-tabs .nav-link.active {
+    border: 1px solid #418bca;
+}
+
+.news-section .nav-tabs .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 0;
+}
+
+.news-section .nav-tabs .nav-link .fa-newspaper {
+    margin-right: 5px;
+}
+.news-section .tab-content {
+    background: #f0f9ff;
+    padding: 10px;
+    color: #000000;
+    min-height: 320px;
+}
+.news-section .tab-content small {
+    color: #777;
+}
+.news-section .tab-content .tab-pane .fa {
+    margin-right: 5px;
+}
+.news-section .tab-content .tab-pane a {
+    color: #333333 !important;
+}
+
+/* end new and events css*/
 
 :root {
   --blue: #007bff;

@@ -16,6 +16,7 @@ Route::prefix('admin')->group(function()
 
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
 	Route::get('/dashboard', 'Admin\DashboardController@index');
+	Route::resource('/post', 'Admin\PostController');
 });
  
 //Route::get('/admin', 'AdminController@index');
@@ -52,5 +53,7 @@ Route::prefix('alumni')->group(function()
 
 
 
-Route::view('/', 'frontPage');
+Route::get('/','PostShowController@index');
+Route::get('/postdetails/{id}','PostShowController@details');
+
 

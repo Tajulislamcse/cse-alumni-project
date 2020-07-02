@@ -11,9 +11,9 @@
                   <img src="{{asset('/uploads/'. $fetchRecord->getImage())}}" style="width:200px;">
                 </div>
                 <div>
-                    <h2 class="margin-10px-bottom p-2 font-size24 md-font-size22 sm-font-size20 font-weight-600">{{$fetchRecord->getName()}}
+                    <h2 class="margin-10px-bottom p-2 font-size24 md-font-size22 sm-font-size20 font-weight-600 profile-username">{{$fetchRecord->getName()}}
                     </h2>
-                        <h4 class="sm-width-95 sm-margin-auto">  <i class="fas fa-briefcase"></i><strong class="margin-10px-left p-1 text-orange">Profession:</strong><p class="p-2">{{$fetchRecord->getProfession()}}</p>
+                        <h4 class="sm-width-95 sm-margin-auto">  <i class="fas fa-briefcase"></i><strong class="margin-10px-left p-1 text-orange">Profession:</strong><p class="text-muted p-2">{{$fetchRecord->getProfession()}}</p>
                         </h4>
                         @if(Auth::id()==$fetchRecord->getId())
 
@@ -42,7 +42,7 @@
 
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
-                                <h4 class="modal-title model-own" id="myModalLabel">Job edit form of &nbsp;&nbsp; <span class="faculty_title">{{$fetchRecord->getName()}}</span></h4>
+                                <h4 class="modal-title model-own" id="myModalLabel">Job Edit Form </h4>
 
                             </div>
 
@@ -76,6 +76,7 @@
 
                 </div>
             </div>
+            <!--/col-md-5-->
 
             <div class="col-md-7">
                 <div class="team-single-text padding-50px-left sm-no-padding-left">
