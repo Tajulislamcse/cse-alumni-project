@@ -19,20 +19,20 @@
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
     <div class="carousel-item active">
-      <img class="d-block w-100" src="/dist/img/slider1.jpg" style="height:350px" 
+      <img class="d-block w-100" src="/dist/img/slider1.jpg" style="auto" 
         alt="First slide">
     </div>
     <!--/First slide-->
     <!--Second slide-->
     <div class="carousel-item">
       <img class="d-block w-100" src="/dist/img/slider2.jpg"
-        alt="Second slide" style="height:350px">
+        alt="Second slide" style="height:auto">
     </div>
     <!--/Second slide-->
     <!--Third slide-->
     <div class="carousel-item">
       <img class="d-block w-100" src="/dist/img/slider3.jpg"
-        alt="Third slide" style="height:350px">
+        alt="Third slide" style="height:auto">
     </div>
     <!--/Third slide-->
   </div>
@@ -103,7 +103,7 @@
     </ul>
     
     @endforeach
-    @if( $news->count()==5)
+    @if( $news->count()>=5)
 <div class="row text-center">
     <div class="col-md-12 text-right">
     
@@ -151,7 +151,7 @@
     </ul>
     
 @endforeach
-@if($events->count()==5)
+@if($events->count()>=5)
 <div class="row text-center">
     <div class="col-md-12 text-right">
     

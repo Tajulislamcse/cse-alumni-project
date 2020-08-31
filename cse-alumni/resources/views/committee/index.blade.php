@@ -2,7 +2,7 @@
 
 @section('main-content')
 <style>
-  img{  width:100px;height: 100px}
+ 
   .card{padding: 10px 15px;
   border: 1px solid #CCCCCC;}
 </style>
@@ -38,7 +38,7 @@
 
                             <div class="col-md-4 faculty-pic">
 
-                                <img src="{{asset('/uploads/'.$p->image)}}"alt="">  
+                                <img src="{{asset('storage/images/committee/'.$p->image)}}"alt="">  
 
                             </div>
 
@@ -99,7 +99,7 @@
 
                                     <div class="col-md-5 col-md-offset-4 margin-bottom-10">
 
-                                        <img src="{{asset('/uploads/'.$p->image)}}"alt=""> 
+                                        <img src="{{asset('storage/images/committee/'.$p->image)}}"alt=""> 
 
                                     </div>
 
@@ -225,7 +225,7 @@
 
                             <div class="col-md-4 faculty-pic">
 
-                                <img src="{{asset('/uploads/'.$s->image)}}"alt="">  
+                                <img src="{{asset('storage/images/committee/'.$s->image)}}"alt="">  
 
                             </div>
 
@@ -291,7 +291,7 @@
 
                                     <div class="col-md-5 col-md-offset-4 margin-bottom-10">
 
-                                        <img src="{{asset('/uploads/'.$s->image)}}"alt=""> 
+                                        <img src="{{asset('storage/images/committee/'.$s->image)}}"alt=""> 
 
                                     </div>
 
@@ -419,7 +419,7 @@
 
                             <div class="col-md-4 faculty-pic">
 
-                                <img src="{{asset('/uploads/'.$m->image)}}"alt="">  
+                                <img src="{{asset('storage/images/committee/'.$m->image)}}"alt="">  
 
                             </div>
 
@@ -480,7 +480,7 @@
 
                                     <div class="col-md-5 col-md-offset-4 margin-bottom-10">
 
-                                        <img src="{{asset('/uploads/'.$m->image)}}"alt=""> 
+                                        <img src="{{asset('storage/images/committee/'.$m->image)}}"alt=""> 
 
                                     </div>
 

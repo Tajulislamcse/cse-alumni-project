@@ -13,6 +13,7 @@ class BatchController extends Controller
     {
         $this->middleware('auth');
        $this->middleware('role:alumni');
+         $this->middleware('role:admin');
     }
 	
     

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 
 class PostController extends Controller
@@ -43,9 +46,28 @@ class PostController extends Controller
         $post=new Post();
         $post->user_id=Auth::id();
         $post->title=$request->title;
-         $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-         $request->file('image')->move(public_path('uploads'), $imageName);
-         $post->image = $imageName;
+         
+         
+            $image = $request->file('image');
+       
+       
+//            make unique name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $request->title.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+//            check category dir is exists
+         
+
+            //            check category slider dir is exists
+            if (!Storage::disk('public')->exists('images/post'))
+            {
+                Storage::disk('public')->makeDirectory('images/post');
+            }
+            //            resize image for category slider and upload
+            $resizeImg = Image::make($image)->resize(500,281)->stream();
+            Storage::disk('public')->put('images/post/'.$imageName,$resizeImg);
+
+
+         $post->image=$imageName;
          $post->category=$request->category;
          $post->body = strip_tags($request->body);
          if(isset($request->status))
@@ -93,8 +115,27 @@ class PostController extends Controller
         $post=Post::find($id);
          $post->user_id=Auth::id();
         $post->title=$request->title;
-         $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-         $request->file('image')->move(public_path('uploads'), $imageName);
+         
+            $image = $request->file('image');
+       
+       
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $request->title.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+//            check category dir is exists
+            if (!Storage::disk('public')->exists('images/post'))
+            {
+                Storage::disk('public')->makeDirectory('images/post');
+            }
+//            delete old image
+            if (Storage::disk('public')->exists('images/post/'.$post->image))
+            {
+                Storage::disk('public')->delete('images/post/'.$post->image);
+            }
+//            resize image for category and upload
+            $resizeImg = Image::make($image)->resize(500,281)->stream();
+            Storage::disk('public')->put('images/post/'.$imageName,$resizeImg);
+
+
          $post->image = $imageName;
          $post->category=$request->category;
          $post->body = strip_tags($request->body);
@@ -118,8 +159,13 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post=Post::find($id);
+        if (Storage::disk('public')->exists('images/post/'.$post->image))
+        {
+            Storage::disk('public')->delete('images/post/'.$post->image);
+        }
+       
         $post->delete();
-        
-        return redirect('/admin/post');
+         
+       return redirect('/admin/post');
     }
 }

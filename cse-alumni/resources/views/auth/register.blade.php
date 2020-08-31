@@ -21,7 +21,10 @@
                             <div class="name">Roll</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="roll" placeholder="please enter your roll" required>
+                                    <input class="input--style-5" type="text" name="roll" placeholder="please enter your roll" class="@error('roll') is-invalid @enderror">
+                                    @error('roll')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -30,7 +33,11 @@
                             <div class="name">Name</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="name" placeholder="please enter your name" required>
+                                    <input class="input--style-5" type="text" name="name" placeholder="please enter your name" class="@error('name') is-invalid @enderror">
+
+                                       @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                            </div>
@@ -40,7 +47,7 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="input--style-5" style="width: 700px">
-                                        <select name="batch" required>
+                                        <select name="batch" required class="@error('batch') is-invalid @enderror">
                                             <option disabled="disabled" selected="selected">please select batch from the option</option>
                                             <option value="cse-1st">cse-1st</option>
                                             <option value="cse-2nd">cse-2nd</option>
@@ -52,6 +59,9 @@
                                              
                                         </select>
                                         <div class="select-dropdown"></div>
+                                  @error('batch')
+                                 <div class="alert alert-danger">{{ $message }}</div>
+                               @enderror              
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +74,7 @@
                                 <div class="input-group">
                                     <div class="input--style-5" style="width: 700px">
                                         <select name="session" required>
-                                            <option disabled="disabled" selected="selected">please select session from the option</option>
+                                            <option disabled="disabled" selected="selected" class="@error('session') is-invalid @enderror">please select session from the option</option>
                                             <option value="2008-2009">2008-2009</option>
                                             <option value="2009-2010">2009-2010</option>
                                             <option value="2010-2011">2010-2011</option>
@@ -75,6 +85,9 @@
                                        
                                         </select>
                                         <div class="select-dropdown"></div>
+                                        @error('session')
+                                       <div class="alert alert-danger">{{ $message }}</div>
+                                       @enderror 
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +100,7 @@
                                 <div class="input-group">
                                     <div class="input--style-5" style="width: 700px">
                                         <select name="bloodgroup" required>
-                                            <option disabled="disabled" selected="selected">please select bloodgroup from the option</option>
+                                            <option disabled="disabled" selected="selected" class="@error('bloodgroup') is-invalid @enderror">please select bloodgroup from the option</option>
                                             <option value="O+">O+</option>
                                             <option value="AB+">AB+</option>
                                             <option value="B+">B+</option>
@@ -97,8 +110,11 @@
                                             <option value="B-">B-</option>
                                             <option value="A-">A-</option>
                                        
-                                        </select>
+                                        </select >
                                         <div class="select-dropdown"></div>
+                                        @error('bloodgroup')
+                                       <div class="alert alert-danger">{{ $message }}</div>
+                                       @enderror
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +126,10 @@
                             <div class="name">image</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="file" name="image">
+                                    <input class="input--style-5" type="file" name="image" class="@error('image') is-invalid @enderror">
+                                    @error('image')
+                       <div class="alert alert-danger">{{ $message }}</div>
+                                  @enderror
                                 </div>
                             </div>
                         </div>
@@ -118,7 +137,10 @@
                             <div class="name">Profession</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="profession">
+                                    <input class="input--style-5" type="text" name="profession" class="@error('profession') is-invalid @enderror">
+                                    @error('profession')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                   @enderror
                                 </div>
                             </div>
                         </div>
@@ -126,7 +148,11 @@
                             <div class="name">PhoneNumber</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="phonenumber">
+                                    <input class="input--style-5" type="text" name="phonenumber"class="@error('phonenumber') is-invalid @enderror">
+
+                                    @error('phonenumber')
+                                  <div class="alert alert-danger">{{ $message }}</div>
+                                 @enderror
                                 </div>
                             </div>
                         </div>
@@ -135,7 +161,10 @@
                             <div class="name">Email</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="email">
+                                    <input class="input--style-5" type="text" name="email" class="@error('email') is-invalid @enderror">
+                                      @error('email')
+                                         <div class="alert alert-danger">{{ $message }}</div>
+                                      @enderror
                                 </div>
                             </div>
                         </div>
@@ -144,7 +173,10 @@
                             <div class="name">Password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="password">
+                                    <input class="input--style-5" type="password" name="password" class="@error('password') is-invalid @enderror">
+                                    @error('password')
+                                      <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

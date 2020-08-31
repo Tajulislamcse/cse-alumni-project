@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Alumni;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Committee;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 class CommitteeMemberController extends Controller
 {
@@ -50,8 +54,25 @@ class CommitteeMemberController extends Controller
         $committee=new Committee();
         $committee->name=$request->name;
         $committee->designation=$request->designation;
-         $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-         $request->file('image')->move(public_path('uploads'), $imageName);
+        $image = $request->file('image');
+       
+       
+	//            make unique name for image
+	    $currentDate = Carbon::now()->toDateString();
+	    $imageName = $request->name.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+	//            check category dir is exists
+	 
+
+	    //            check category slider dir is exists
+	    if (!Storage::disk('public')->exists('images/committee'))
+	    {
+	        Storage::disk('public')->makeDirectory('images/committee');
+	    }
+	    //            resize image for category slider and upload
+	    $resizeImg = Image::make($image)->resize(100,100)->stream();
+	    Storage::disk('public')->put('images/committee/'.$imageName,$resizeImg);
+
+        
          $committee->image = $imageName;
 
         $committee->batch=$request->batch;

@@ -7,8 +7,8 @@
 
 
 
+
 Auth::routes(); // Authentication routes
-Route::get('/home','HomeController@index');
 
 
 Route::prefix('admin')->group(function()
@@ -17,6 +17,7 @@ Route::prefix('admin')->group(function()
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
 	Route::get('/dashboard', 'Admin\DashboardController@index');
 	Route::resource('/post', 'Admin\PostController');
+	Route::resource('/slider','Admin\SliderImgController');
 });
  
 //Route::get('/admin', 'AdminController@index');
@@ -51,9 +52,9 @@ Route::prefix('alumni')->group(function()
 
 
 
+//Route::view('/','frontPage');
 
-
-Route::get('/','PostShowController@index');
+Route::get('/','HomeController@index');
 Route::get('/postdetails/{id}','PostShowController@details');
 
 

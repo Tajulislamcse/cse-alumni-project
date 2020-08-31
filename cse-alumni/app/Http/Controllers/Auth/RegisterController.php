@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -60,7 +63,7 @@ class RegisterController extends Controller
             'profession' => ['required', 'string', 'max:255'],
             'phonenumber' => ['required', 'string', 'max:255'],
            // 'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
         ]);
     }
@@ -76,10 +79,32 @@ class RegisterController extends Controller
     {  
         $request=request();
 
-        
+        /*
         $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
          $request->file('image')->move(public_path('uploads'), $imageName);
         // $this->image = $imageName;
+       */
+
+                     // get form image
+            $image = $request->file('image');
+       
+       
+//            make unique name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $request->name.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+//            check category dir is exists
+         
+
+            //            check category slider dir is exists
+            if (!Storage::disk('public')->exists('images/Alumni'))
+            {
+                Storage::disk('public')->makeDirectory('images/Alumni');
+            }
+            //            resize image for category slider and upload
+            $alumniImg = Image::make($image)->resize(200,200)->stream();
+            Storage::disk('public')->put('images/Alumni/'.$imageName,$alumniImg);
+
+
 
 
         $user=User::create([
