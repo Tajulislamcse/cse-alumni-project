@@ -1,4 +1,5 @@
-@extends('alumni.layouts.master') @section('main-content')
+@extends('alumni.layouts.master')
+ @section('main-content')
 
 <div class="container">
       <div class="wrapper">

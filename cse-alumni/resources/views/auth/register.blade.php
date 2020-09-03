@@ -1,9 +1,22 @@
 
 @extends('alumni.layouts.master')
+@push('css')
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset('/dist/css/adminlte.min.css')}}">
+
+@endpush
 @section('main-content')
+
 
 <body>
   <div class="container">
+    @php
+   if (!$errors->any())
+   {
+    $count=1;
+   }
+
+   @endphp
     <div class="wrapper">
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
@@ -184,7 +197,7 @@
                        
                         <div class="pull-right">
                             <button style=" margin-left:115px;
-                             width: 510px;" class="btn btn--pill btn--green" type="submit">submit</button>
+                             width: 510px;" class="btn btn--pill btn--green toastsDefaultInfo" type="submit">submit</button>
                         </div>
                     </form>
                 </div>
@@ -193,5 +206,41 @@
     </div>
   </div>
   </div>
+  
 
 @endsection
+
+@push('scripts')
+<!-- AdminLTE App -->
+<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+
+
+
+
+  
+<script type="text/javascript">
+   @php
+   if($count!=1)
+   {
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+   
+    $('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success', 
+        title: 'Important!',
+        body: 'We are going to verify your account. If your account is approved,you will be notified via email. You will not be able to login untill your account is approved.'
+      })
+    });
+   
+  });
+}
+  @endphp
+</script>
+@endpush

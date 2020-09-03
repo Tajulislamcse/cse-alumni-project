@@ -1,4 +1,5 @@
-@extends('admin.layouts.master') @section('content')
+@extends('admin.layouts.master')
+ @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -67,6 +68,7 @@
                                                             <option value="events">events</option>
                                                       </select>
                                                 </div>
+                
 
                                                 <div class="form-check">
                                                       <input type="checkbox" class="form-check-input" name="status" value="1" />
@@ -100,15 +102,37 @@
 
                   <!--/row-->
             </div>
+                      
             <!-- /.container-fluid -->
       </section>
       <!-- /.content -->
 </div>
-
-@endsection @section('scripts')
+                     
+@endsection
+ @section('scripts')
 
 <script type="text/javascript" src="{{asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script>
       tinymce.init({ selector: "textarea", height: "300" });
+
 </script>
+<script type="text/javascript">
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+$('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-info', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+
+</script>
+
 @endsection

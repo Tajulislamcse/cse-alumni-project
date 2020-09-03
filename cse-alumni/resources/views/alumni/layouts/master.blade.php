@@ -7,9 +7,16 @@
             <meta name="author" content="" />
 
             <title>CSE Alumni</title>
-            @include('alumni.partials.css') @include('alumni.partials.js')
+            @stack('css')
+
+            @include('alumni.partials.css')
+            @include('alumni.partials.js')
       </head>
       <body id="page-top">
-            @include('alumni.partials.navbar') @yield('main-content') @include('alumni.partials.footer') @yield('scripts')
+            @include('alumni.partials.navbar') 
+            @yield('main-content') 
+            @include('alumni.partials.footer')
+            @yield('scripts')
+            @stack('scripts')
       </body>
 </html>

@@ -64,7 +64,7 @@ class RegisterController extends Controller
             'phonenumber' => ['required', 'string', 'max:255'],
            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:5'],
         ]);
     }
 

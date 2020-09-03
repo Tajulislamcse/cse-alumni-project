@@ -1,4 +1,5 @@
-@extends('alumni.layouts.master') @section('main-content')
+@extends('alumni.layouts.master')
+@section('main-content')
 
 <div class="container">
       <div class="wrapper">
@@ -136,16 +137,42 @@
                                                       </div>
                                                 </div>
                                           </div>
+                                          
 
                                           <div class="pull-right">
                                                 <button style="margin-left: 115px; width: 510px;" class="btn btn--pill btn--green" type="submit">submit</button>
                                           </div>
                                     </form>
+                       
                               </div>
                         </div>
                   </div>
             </div>
       </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+
+<script type="text/javascript">
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+$('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-info', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+
+</script>
 
 @endsection

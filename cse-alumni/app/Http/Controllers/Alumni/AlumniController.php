@@ -35,6 +35,7 @@ class AlumniController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /*
     public function store(Request $request)
     {
 
@@ -45,7 +46,7 @@ class AlumniController extends Controller
         //return redirect('/');
         //
     }
-
+*/
     /**
      * Display the specified resource.
      *

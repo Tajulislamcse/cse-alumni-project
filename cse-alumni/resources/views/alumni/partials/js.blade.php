@@ -1,5 +1,7 @@
 
 	<!-- REQUIRED SCRIPTS -->
+    <!-- SweetAlert2 -->
+<script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
 	<!-- jQuery -->
 	<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
