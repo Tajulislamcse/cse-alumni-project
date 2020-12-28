@@ -1,4 +1,3 @@
-
 @extends('alumni.layouts.master')
 @push('css')
 <!-- Theme style -->
@@ -10,13 +9,7 @@
 
 <body>
   <div class="container">
-    @php
-   if (!$errors->any())
-   {
-    $count=1;
-   }
 
-   @endphp
     <div class="wrapper">
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
@@ -28,10 +21,10 @@
                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
-
+                        <p>The<span style="color:red"> *</span> marked fields are <span style="color:red">mandatory</span>,must be completed.</p>
 
                             <div class="form-row">
-                            <div class="name">Roll</div>
+                            <div class="name">Roll <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="roll" placeholder="please enter your roll" class="@error('roll') is-invalid @enderror">
@@ -43,7 +36,7 @@
                         </div>
 
                            <div class="form-row">
-                            <div class="name">Name</div>
+                            <div class="name">Name <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="name" placeholder="please enter your name" class="@error('name') is-invalid @enderror">
@@ -56,7 +49,7 @@
                            </div>
                        
                          <div class="form-row">
-                            <div class="name">Batch</div>
+                            <div class="name">Batch <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="input--style-5" style="width: 700px">
@@ -82,7 +75,7 @@
                         
 
                             <div class="form-row">
-                            <div class="name">Session</div>
+                            <div class="name">Session <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="input--style-5" style="width: 700px">
@@ -108,7 +101,7 @@
                          
 
                             <div class="form-row">
-                            <div class="name">BloodGroup</div>
+                            <div class="name">BloodGroup <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="input--style-5" style="width: 700px">
@@ -136,7 +129,7 @@
 
 
                          <div class="form-row">
-                            <div class="name">image</div>
+                            <div class="name">Image</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="file" name="image" class="@error('image') is-invalid @enderror">
@@ -171,7 +164,7 @@
                         </div>
                          
                             <div class="form-row">
-                            <div class="name">Email</div>
+                            <div class="name">Email <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="email" class="@error('email') is-invalid @enderror">
@@ -183,7 +176,7 @@
                         </div>
                          
                             <div class="form-row">
-                            <div class="name">Password</div>
+                            <div class="name">Password <span style="color:red">*</span></div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="password" name="password" class="@error('password') is-invalid @enderror">
@@ -193,8 +186,21 @@
                                 </div>
                             </div>
                         </div>
-                      
-                       
+                            <div class="form-row">
+                            <div class="name">Gender <span style="color:red">*</span></div>
+                               <div class="form-check form-check-inline">
+<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">Male</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">Female</label>
+</div>
+
+
+                     
+                        </div>  
+                    
                         <div class="pull-right">
                             <button style=" margin-left:115px;
                              width: 510px;" class="btn btn--pill btn--green toastsDefaultInfo" type="submit">submit</button>
@@ -219,17 +225,14 @@
 
   
 <script type="text/javascript">
-   @php
-   if($count!=1)
-   {
-  $(function() {
+   
+    $(function() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
       timer: 3000
     });
-
    
     $('.toastsDefaultInfo').click(function() {
       $(document).Toasts('create', {
@@ -240,7 +243,7 @@
     });
    
   });
-}
-  @endphp
+
+  
 </script>
 @endpush

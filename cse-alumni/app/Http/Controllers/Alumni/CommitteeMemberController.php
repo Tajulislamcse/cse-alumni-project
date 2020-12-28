@@ -8,7 +8,7 @@ use App\Models\Committee;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-
+use Brian2694\Toastr\Facades\Toastr;
 
 class CommitteeMemberController extends Controller
 {
@@ -80,6 +80,7 @@ class CommitteeMemberController extends Controller
         $committee->profession=$request->profession;
         $committee->email=$request->email;
         $committee->save(); 
+          Toastr::success('Messages in here', 'Title');
         return redirect('alumni/test');
 
     }

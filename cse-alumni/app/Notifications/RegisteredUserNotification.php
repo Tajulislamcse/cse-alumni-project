@@ -4,26 +4,24 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-
-class JobChange extends Notification implements ShouldQueue
+class RegisteredUserNotification extends Notification
 {
     use Queueable;
-    public $alumni;
-    public $old;
-
+    public $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($alumni,$old)
+    public function __construct($user)
     {
-        $this->alumni=$alumni;
-        $this->old=$old;
+        $this->user=$user;
     }
-    /*
+
+    /**
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
@@ -31,7 +29,7 @@ class JobChange extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
     /**
@@ -40,9 +38,14 @@ class JobChange extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    /*
-
-    */
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+                     ->greeting('Hello,'.$this->user->name)
+                    ->subject('Registration Approved')
+                   
+                    ->line('Congrats! your registration is approved.Now you can login to CSE Alumni Association website');
+    }
 
     /**
      * Get the array representation of the notification.
@@ -53,11 +56,7 @@ class JobChange extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //following segment for a person who changed his job
-            'name'=>$this->alumni->name,
-            'batch'=>$this->alumni->batch,
-            'profession'=>$this->alumni->profession,
-            'oldProfession'=>$this->old
-            ];
+            //
+        ];
     }
 }

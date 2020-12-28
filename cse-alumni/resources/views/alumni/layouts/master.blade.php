@@ -6,7 +6,7 @@
             <meta name="description" content="" />
             <meta name="author" content="" />
 
-            <title>CSE Alumni</title>
+            <title>CSE Alumni Association</title>
             @stack('css')
 
             @include('alumni.partials.css')

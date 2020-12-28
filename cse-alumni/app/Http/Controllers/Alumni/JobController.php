@@ -71,7 +71,6 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
          $user=User::find($id);
          $old=$user->profession;
          $user->profession=$request->profession;
@@ -90,6 +89,7 @@ class JobController extends Controller
         Notification::send($users,new JobChange($user,$old));
            
         return redirect('/');
+    
 
     }
 

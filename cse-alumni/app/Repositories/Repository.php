@@ -17,16 +17,16 @@ class Repository implements IRepository
 	}
 	public function getAll($batchNo)
 	{
-     $roleName='alumni';
+		     $roleName='alumni';
 
-   return $this->model->whereHas('roles', function ($q) use ($roleName,$batchNo) {
-    $q->where([
-    	'name'=>$roleName,
-    	'batch'=>$batchNo
-    ]);
-})->get();
+		       return $this->model->whereHas('roles', function ($q) use ($roleName,$batchNo) {
+		                 $q->where([
+		    	         'name'=>$roleName,
+		    	          'batch'=>$batchNo
+		                          ]);
+		                   })->get();
 	
-   }
+    }
 	public function get($id)
 	{
 		return $this->model->findOrFail($id);

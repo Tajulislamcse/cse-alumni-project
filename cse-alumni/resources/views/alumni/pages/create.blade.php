@@ -1,6 +1,5 @@
 @extends('alumni.layouts.master')
 @section('main-content')
-
 <div class="container">
       <div class="wrapper">
             <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">

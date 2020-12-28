@@ -15,6 +15,7 @@ Route::prefix('admin')->group(function()
 {
 
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
+	Route::resource('/registeruser','Admin\RegisteredUserController');
 	Route::get('/dashboard', 'Admin\DashboardController@index');
 	Route::resource('/post', 'Admin\PostController');
 	Route::resource('/slider','Admin\SliderImgController');

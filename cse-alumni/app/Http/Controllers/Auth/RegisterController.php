@@ -9,6 +9,8 @@ use App\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use App\Notifications\AdminNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
@@ -33,6 +35,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+
    protected $redirectTo ='/';
 
     /**
@@ -106,7 +109,7 @@ class RegisterController extends Controller
 
 
 
-
+              
         $user=User::create([
              'roll'=>$data['roll'],
              'name' => $data['name'],
@@ -119,7 +122,20 @@ class RegisterController extends Controller
              'email' => $data['email'],
              'password' => Hash::make($data['password']),
         ]);
+        $roleName='admin';
+         $users=User::whereHas('roles', function ($q) use ($roleName) {
+         $q->where([
+         'name'=>$roleName
+         ]);
+         })->get();
+        
+        Notification::send($users,new AdminNotification($user));
+        
+         
         $user->roles()->attach(Role::where('name','alumni')->first());
         return $user;
+
     }
+      
+
 }

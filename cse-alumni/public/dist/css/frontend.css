@@ -3145,7 +3145,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu.show {
-  display: block;
+  display:block;
 }
 
 .dropdown-header {
@@ -9688,7 +9688,7 @@ a.text-dark:hover, a.text-dark:focus {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:​"Times New Roman","Open Sans", "Arial", "Helvetica Neue",sans-serif,
   font-weight: 700;
 }
 

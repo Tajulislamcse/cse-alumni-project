@@ -1,89 +1,109 @@
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger">CSE AlUMNI</a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">HOME</a>
-          </li>
-            <li class="nav-item mx-0 mx-lg-1 dropdown">
-            <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">MEMBERSHIP</a>
-            <div class="dropdown-menu">
-               <a href="/register" class="dropdown-item">REGISTRATION</a>
-             </div>          
-                      
-          </li>
-          <li class="nav-item mx-0 mx-lg-1 dropdown">
-            <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown"  href="#">ALUMNI LIST</a>
-            <div class="dropdown-menu">
+<nav class="navbar navbar-expand-lg bg-secondary" id="mainNav">
+      <div class="container">
+            <a class="navbar-brand js-scroll-trigger">CSE ALUMNI</a>
+            <button
+                  class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarResponsive"
+                  aria-controls="navbarResponsive"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+            >
+                  Menu
+                  <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1">
+                              <a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger" href="/">HOME</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                              <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#">MEMBERSHIP</a>
+                              <ul class="dropdown-menu">
+                                    <li><a href="/register" class="dropdown-item">REGISTRATION</a></li>
+                              </ul>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                              <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#">ALUMNI LIST</a>
+                              <ul class="dropdown-menu">
+                                    <?php $batches=App\Models\User::orderBy('batch', 'ASC')->distinct()->get(['batch']); ?> @foreach($batches as $batch)
 
-                <?php $batches=App\Models\User::orderBy('batch', 'ASC')->distinct()->get(['batch']);      ?>
-                   @foreach($batches as $batch)
+                                    <li><a href="{{url('/alumni',$batch->batch)}}" class="dropdown-item">{{$batch->batch}} batch</a></li>
+                                    @endforeach
+                              </ul>
+                        </li>
 
-               <a href="{{url('/alumni',$batch->batch)}}" class="dropdown-item">{{$batch->batch}} batch</a>
-                    @endforeach
+                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                              <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#">ALUMNI COMMITTEE</a>
+                              <ul class="dropdown-menu">
+                                    <a href="/alumni/test" class="dropdown-item">Members Profile</a>
 
-               
-             </div>         
-                      
-          </li>
-          
-             <li class="nav-item mx-0 mx-lg-1 dropdown">
-                <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">ALUMNI COMMITTEE</a>
-                <div class="dropdown-menu">
-                   <a href="/alumni/test" class="dropdown-item">MEMBERS PROFILE</a>
-                 
-                   <a href="/alumni/committee/create" class="dropdown-item">ACCESSING INFORMATION</a>
-                          
-                                 
-                          
-              </li>
-        
-       
+                                    <li><a href="/alumni/committee/create" class="dropdown-item">Access Information</a></li>
+                              </ul>
+                        </li>
 
-           <!-- Right Side Of Navbar -->
-               
+                        <!-- Right Side Of Navbar -->
+
                         <!-- Authentication Links -->
                         @guest
-                            
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">LOGIN</a>
-          </li>
-                            @if (Route::has('register'))
-                              
-                            @endif
+
+                        <li class="nav-item mx-0 mx-lg-1">
+                              <a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger" href="/login">LOGIN</a>
+                        </li>
+                        @if (Route::has('register')) 
+                        @endif 
                         @else
-                        
-                       <li class="nav-item mx-0 mx-lg-1 dropdown">
-                        <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">  {{ Auth::user()->name }} <span class="caret"></span></a>
+                              <li class="nav-item mx-0 mx-lg-1 dropdown">
+                                <a href="#" class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigge" data-toggle="dropdown"
+                                   role="button" aria-expanded="false"> Notifications <span class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
+                                  
                                 
-                      
-          
+                                
+                                   
 
+                                   <ul class="dropdown-menu" role="menu">
+                                       @foreach(auth()->user()->unreadNotifications as $notification)
+                                          
+                                            
+                                    
+                                   <li class="p-3">
 
+                                         <b style="color:green;">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}}&#41;</b>
+                                          <span style="color:#000; font-size:90%">changed his job</span>
+                                          <br/>
+                                          <small style="color:#90949C">
+                                            {{date('F j, Y', strtotime($notification->created_at))}}
+                                          at {{date('H: i', strtotime($notification->created_at))}}</small>
+                                      </li>    
+                                       <div class="dropdown-divider"></div>
 
+                                        
+                                       @endforeach
+                                   </ul>
+                              </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                </li>      
+                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                              <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#"> {{ Auth::user()->name }} <span class="caret"></span></a>
+
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a
+                                          class="dropdown-item"
+                                          href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                    >
+                                          {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
+                                          @csrf
                                     </form>
-                                </div>
-                          </li>
+                              </div>
+                        </li>
                         @endguest
-                    
-        </ul>
+                  </ul>
+            </div>
       </div>
-    </div>
-  </nav>
-
-  
+</nav>
