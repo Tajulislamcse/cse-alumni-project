@@ -68,7 +68,7 @@
                                             
                                     
                                    <li class="p-3">
-                                         <b style="color:green;">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}}&#41;</b>
+                                         <b style="color:green">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}}&#41;</b>
                                           <span style="color:#000; font-size:90%">changed his job</span>
                                           <br/>
                                           <small style="color:#90949C">
