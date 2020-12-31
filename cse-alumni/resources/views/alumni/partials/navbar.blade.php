@@ -54,52 +54,46 @@
                         @if (Route::has('register')) 
                         @endif 
                         @else
-                              <li class="nav-item mx-0 mx-lg-1 dropdown">
-                                <a href="#" class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigge" data-toggle="dropdown"
-                                   role="button" aria-expanded="false"> Notifications <span class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
-                                  
-                                
-                                
-                                   
-
-                                   <ul class="dropdown-menu" role="menu">
-                                       @foreach(auth()->user()->unreadNotifications as $notification)
-                                          
-                                            
-                                    
-                                   <li class="p-3">
-                                         <b style="color:green">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}}&#41;</b>
-                                          <span style="color:#000; font-size:90%">changed his job</span>
+                      <li class="nav-item mx-0 mx-lg-1 dropdown">
+                              <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#">Notifications
+                                @if(auth()->user()->unreadNotifications->count())
+                                    <span class="badge badge-danger">
+                                    {{auth()->user()->unreadNotifications->count()}}</span>
+                                   @endif
+                                 </a>
+                                @if(auth()->user()->notifications->count())
+                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @foreach(auth()->user()->unreadNotifications as $notification)
+                                 <li class="dropdown-item p-3">
+                                    <b style="color:green">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}} batch&#41;</b>
+                                          <span style="color:#000">changed his job</span>
                                           <br/>
                                           <small style="color:#90949C">
-                                            {{date('F j, Y', strtotime($notification->created_at))}}
+                                             {{date('F j, Y', strtotime($notification->created_at))}}
                                           at {{date('H: i', strtotime($notification->created_at))}}</small>
-                                      </li>    
+                                      </li>
+                                          
                                        <div class="dropdown-divider"></div>
-
-                                        
-                                       @endforeach
-                                   </ul>
-                              </a>
-
-                                </li>      
+                                 @endforeach
+                                 
+                              </ul>
+                              @endif
+                        </li>
+                        
                         <li class="nav-item mx-0 mx-lg-1 dropdown">
                               <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#"> {{ Auth::user()->name }} <span class="caret"></span></a>
 
-                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a
-                                          class="dropdown-item"
-                                          href="{{ route('logout') }}"
-                                          onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                                    >
-                                          {{ __('Logout') }}
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                          @csrf
+                                        @csrf
                                     </form>
-                              </div>
+                                </div>
                         </li>
                         @endguest
                   </ul>

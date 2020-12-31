@@ -1,4 +1,3 @@
-
 @extends('alumni.layouts.master')
   <!-- Masthead -->
   @section('main-content')
