@@ -30,6 +30,14 @@ Route::prefix('alumni')->group(function()
 
 	//Route::get('/alumnis/getAlumnisJson','Admin\AlumniController@getAlumnisJson');
 	//Route::get('/dashboard', 'Alumni\DashboardController@index');
+	Route::get('markAllAsRead',function()
+    {
+      auth()->user()->unreadNotifications->markAsRead();
+      //return redirect()->back();
+    });
+ 
+
+
 	Route::resource('/committee','Alumni\CommitteeMemberController');
 	Route::get('/test','Alumni\CommitteeController@index');
 
