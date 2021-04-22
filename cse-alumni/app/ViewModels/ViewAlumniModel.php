@@ -7,26 +7,17 @@ class ViewAlumniModel implements IViewAlumniModel
 	public function __construct(IAlumniService $alumniService)
 	{
 		$this->_alumniService=$alumniService;
+
 	}
-	public function getAll($batchNo)
+	public function getAllByBatch($batch)
 	{
-		return $this->_alumniService->getAll($batchNo);
+		return $this->_alumniService->getAllByBatch($batch);
+	
 	}
 	public function get($id)
 	{
 		return $this->_alumniService->get($id);
 	}
-    /*
-	public function delete($id)
-	{
-		$this->_alumniService->delete($id);
-
-	}
-
-  */
-
-	 
-  
 
 
 }

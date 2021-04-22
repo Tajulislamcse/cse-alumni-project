@@ -2,14 +2,16 @@
 namespace App\BusinessObjects;
 class Alumni extends Person implements IAlumni
 {
+	use Employee;
+
 	private $id;
-	private $roll;
+	private $alumniId;
 	private $batch;
 	private $session;
-	private $profession;
+	private $email;
 	private $password;
 
-	public function setId($id)
+    public function setId($id)
 	{
 	 $this->id=$id;
 	}
@@ -17,13 +19,13 @@ class Alumni extends Person implements IAlumni
 	{
 		return $this->id;
 	}
-	public function setRoll($roll)
+	public function setAlumniId($alumniId)
 	{
-		$this->roll=$roll;
+		$this->alumniId=$alumniId;
 	}
-	public function getRoll()
+	public function getAlumniId()
 	{
-		return $this->roll;
+		return $this->alumniId;
 	}
 	public function setBatch($batch)
 	{
@@ -41,13 +43,21 @@ class Alumni extends Person implements IAlumni
 	{
 		return $this->session;
 	}
-	public function setProfession($profession)
+	public function setDesignation($designation)
 	{
-		$this->profession=$profession;
+		$this->designation=$designation;
 	}
-	public function getProfession()
+	public function getDesignation()
 	{
-		return $this->profession;
+		return $this->designation;
+	}
+    public function setEmail($email)
+	{
+		$this->email=$email;
+	}
+	public function getEmail()
+	{
+		return $this->email;
 	}
 	public function setPassword($password)
 	{
@@ -57,5 +67,44 @@ class Alumni extends Person implements IAlumni
 	{
 		return $this->password;
 	}
-
+		public function setName($name)
+	{
+		$this->name=$name;
+	}
+	public function getName()
+	{
+		return $this->name;
+	}
+	public function setBloodgroup($bloodgroup)
+	{
+		$this->bloodgroup=$bloodgroup;
+	}
+	public function getBloodgroup()
+	{
+		return $this->bloodgroup;
+	}
+	public function setImage($image)
+	{
+		$this->image=$image;
+	}
+	public function getImage()
+	{
+		return $this->image;
+	}
+	public function setPhoneNo($phoneNo)
+	{
+		$this->phoneNo=$phoneNo;
+	}
+	public function getPhoneNo()
+	{
+		return $this->phoneNo;
+	}
+	public function setGender($gender)
+	{
+		$this->gender=$gender;
+	}
+	public function getGender()
+	{
+		return $this->gender;
+	}
 }

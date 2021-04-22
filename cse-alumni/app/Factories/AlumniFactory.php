@@ -1,59 +1,70 @@
 <?php
 namespace App\Factories;
 class AlumniFactory
-{   
-	public static function setValueToBoFromDatabase($fetchAlldataFromDatabase)
+{ 
+	public static function setProperty($alumni)
+	//convert it into Business Object.This function used for store and update.
 	{
-		    $alumnis=[];
-		foreach ($fetchAlldataFromDatabase as  $alumni) 
+		$alumniObject=resolve('App\BusinessObjects\IAlumni');
+		$alumniObject->setAlumniId($alumni->alumniId);
+		$alumniObject->setName($alumni->name);
+		$alumniObject->setBatch($alumni->batch);
+		$alumniObject->setSession($alumni->session);
+		$alumniObject->setBloodgroup($alumni->bloodgroup);
+		if($alumni->password)//because we don't update password when profile is updated.Image and profession are also updated separately.
 		{
-			$obj=resolve('App\BusinessObjects\IAlumni');
-			$obj->setId($alumni['id']);
-			$obj->setRoll($alumni['roll']);
-			$obj->setName($alumni['name']);
-			$obj->setBatch($alumni['batch']);
-			$obj->setSession($alumni['session']);
-			$obj->setBloodgroup($alumni['bloodgroup']);
-			$obj->setImage($alumni['image']);
-			$obj->setProfession($alumni['profession']);
-			$obj->setPhonenumber($alumni['phonenumber']);
-			$obj->setEmail($alumni['email']);
-			$obj->setPassword($alumni['password']);
-			$alumnis[]=$obj;
+			$alumniObject->setPassword($alumni->password);
+			$alumniObject->setImage($alumni->image);
+			$alumniObject->setProfession($alumni->profession);
 		}
-		return $alumnis;
+		$alumniObject->setPhoneNo($alumni->phoneNo);
+		$alumniObject->setEmail($alumni->email);
+		$alumniObject->setGender($alumni->gender);
+		return $alumniObject;
 	}
-	public static function setValueToBo($alumniInformation)
+	public static function convertIntoObjects($alumniEloquentModels)
+	{//convert it into Business Object
+		$alumniObjects=[];
+		foreach ($alumniEloquentModels as  $alumni) 
+		{
+			$alumniObject=resolve('App\BusinessObjects\IAlumni');
+			$alumniObject->setId($alumni['id']);
+			$alumniObject->setAlumniId($alumni['alumniId']);
+			$alumniObject->setName($alumni['name']);
+			$alumniObject->setBatch($alumni['batch']);
+			$alumniObject->setImage($alumni['image']);
+			$alumniObjects[]=$alumniObject;
+		}
+		return $alumniObjects;//Array of objects
+	}
+	public static function convertIntoObject($alumniEloquentModel)
+	{//convert it into Business Object
+		$alumniObject=resolve('App\BusinessObjects\IAlumni');
+		$alumniObject->setId($alumniEloquentModel['id']);
+		$alumniObject->setAlumniId($alumniEloquentModel['alumniId']);
+		$alumniObject->setName($alumniEloquentModel['name']);
+		$alumniObject->setBatch($alumniEloquentModel['batch']);
+		$alumniObject->setSession($alumniEloquentModel['session']);
+		$alumniObject->setBloodgroup($alumniEloquentModel['bloodgroup']);
+		$alumniObject->setImage($alumniEloquentModel['image']);
+		$alumniObject->setEmployeeId($alumniEloquentModel->profession['id']);
+		$alumniObject->setProfession($alumniEloquentModel->profession['name']);
+		$alumniObject->setPhoneNo($alumniEloquentModel['phoneNo']);
+		$alumniObject->setEmail($alumniEloquentModel['email']);
+		$alumniObject->setGender($alumniEloquentModel['gender']);
+		return $alumniObject;
+	}
+	public static function setProfession($alumniProfession)
 	{
-		$alumni=resolve('App\BusinessObjects\IAlumni');
-		$alumni->setId($alumniInformation->id);
-		$alumni->setRoll($alumniInformation->roll);
-		$alumni->setName($alumniInformation->name);
-		$alumni->setBatch($alumniInformation->batch);
-		$alumni->setSession($alumniInformation->session);
-		$alumni->setBloodgroup($alumniInformation->bloodgroup);
-		$alumni->setImage($alumniInformation->image);
-		$alumni->setProfession($alumniInformation->profession);
-		$alumni->setPhonenumber($alumniInformation->phonenumber);
-		$alumni->setEmail($alumniInformation->email);
-		$alumni->setPassword($alumniInformation->password);
-
-		return $alumni;
+		$alumniObject=resolve('App\BusinessObjects\IAlumni');
+		$alumniObject->setProfession($alumniProfession->profession);
+		$alumniObject->setAppointmentDate($alumniProfession->appointmentDate);
+		return $alumniObject;
 	}
-	public static function convertIntoBoFromDatabaseData($fetchRecord)
-	{       
-		    $obj2=resolve('App\BusinessObjects\IAlumni');
-		    $obj2->setId($fetchRecord['id']);
-			$obj2->setRoll($fetchRecord['roll']);
-			$obj2->setName($fetchRecord['name']);
-			$obj2->setBatch($fetchRecord['batch']);
-			$obj2->setSession($fetchRecord['session']);
-			$obj2->setBloodgroup($fetchRecord['bloodgroup']);
-			$obj2->setImage($fetchRecord['image']);
-			$obj2->setProfession($fetchRecord['profession']);
-			$obj2->setPhonenumber($fetchRecord['phonenumber']);
-			$obj2->setEmail($fetchRecord['email']);
-			$obj2->setPassword($fetchRecord['password']);
-			return $obj2;
+	public static function setImage($alumniImage)
+	{
+		$alumniObject=resolve('App\BusinessObjects\IAlumni');
+		$alumniObject->setImage($alumniImage->image);
+		return $alumniObject;
 	}
 }
