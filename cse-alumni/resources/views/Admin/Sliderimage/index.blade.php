@@ -25,7 +25,7 @@
 				<div class="card">
 					<!-- /.card-header -->
 					<div class="card-body">
-						<table id="example1" class="table table-bordered table-striped">
+						<table id="sliderTable" class="table table-bordered table-striped">
 							<thead>
 								<tr>
 									<th>SliderNo</th>
@@ -43,55 +43,15 @@
 										<img src="{{asset('storage/images/slider/'.$sliderObject->getUrl())}}" width="100px" />
 									</td>
 									<td class="project-actions text-right">
-										<button type="submit" class="btn btn-info btn-sm" href="#"  data-toggle="modal" data-target="#myModal-{{$sliderObject->getId()}}">
+										<button type="button" class="btn btn-info btn-sm editBtn" href="#">
 											<i class="fas fa-pencil-alt"> </i>
 											Edit
 										</button>
-										<!--Modal starts from here-->
-										<!-- Modal -->
-										<div class="modal fade" id="myModal-{{$sliderObject->getId()}}">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h4 class="modal-title">Slider Image Create Form</h4>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<form action="/admin/slider/{{$sliderObject->getId()}}" method="post" enctype="multipart/form-data">
-														@csrf
-														@method('PUT') 
-														<div class="modal-body">
-															<div class="form-group">
-																<div>
-																	<input class="form-control" type="file" name="slider"/>
-																</div>
-															</div>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-															<button type="submit" class="btn btn-primary">Submit</button>
-														</div>
-													</form>
-												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div>
-										<!-- /.modal -->                                              
-										<form id="delete-form-{{$sliderObject->getId()}}" action="/admin/slider/{{$sliderObject->getId()}}" style="display: none;" method="POST">
-											@csrf
-											@method('DELETE')
-										</form>
+
+
 										<button
 										type="button"
-										class="btn btn-danger btn-sm"
-										onclick="if(confirm('Are you sure? You want to delete this?')){
-											event.preventDefault();
-											document.getElementById('delete-form-{{$sliderObject->getId()}}').submit();
-										}else {
-											event.preventDefault();
-										}"
+										class="btn btn-danger btn-sm deleteBtn"
 										>
 										<i class="fas fa-trash"> </i> Delete
 									</button>
@@ -110,11 +70,76 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<!--Edit Modal starts from here-->
+<div class="modal fade" id="editModalId">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Edit Slider</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form id="editFormId" method="post" enctype="multipart/form-data">
+				@csrf
+				@method('PUT')
+				<input type="hidden" id="hiddenId"> 
+				<div class="modal-body">
+					<span class="form_result"></span>
+					<div class="form-group">
+						<div>
+							<input class="form-control" type="file" name="slider"/>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!--Delete Modal-->
+<div class="modal fade" id="deleteModalId">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirmation</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form id="deleteFormId" method="post">
+				@csrf
+				@method('DELETE')
+				<input type="hidden" id="hiddenId"> 
+				<div class="modal-body">
+					<span class="form_result"></span>
+					
+					<h5 align="center">Are you sure you want to delete this data?</h5>
+
+					
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger">Yes</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
 @endsection 
 @section('scripts')
 <script>
-	$(function () {
-		$("#example1").DataTable({
+	$(document).ready(function () {
+		$("#sliderTable").DataTable({
 			columnDefs: [
 			{
 					// column index (start from 0)
@@ -123,6 +148,94 @@
 				},
 				],
 			});
-	});
+		//edit modal starts
+		$(".editBtn").on('click',function()
+		{  
+			$(".form_result").html('');
+			$("#editFormId")[0].reset();
+
+			$("#editModalId").modal("show");
+			$tr=$(this).closest('tr');
+			var data=$tr.children('td').map(function()
+			{
+				return $(this).text();
+			}).get();
+			$("#hiddenId").val(data[0]);
+
+		});
+
+		$("#editFormId").on('submit',function(event)
+		{
+			event.preventDefault();
+
+
+			var id=$("#hiddenId").val();
+			$.ajax({
+				url:"/admin/slider/"+id,  
+				method:"POST",
+				data:new FormData(this),
+				dataType:"json",
+				cache: false,
+				contentType: false,
+				processData: false,
+				success:function(data)
+				{
+
+					var html = '<div class="alert alert-success">' + data.success + '</div>';
+					$(".form_result").html(html);
+
+				},
+				error:function(error)
+				{
+					var html = '<div class="alert alert-danger">' +error.responseJSON.errors.slider+ '</div>';
+					$(".form_result").html(html);
+
+				}
+
+			});
+
+		});
+   //edit modal ends  
+  //delete modal starts
+  $(".deleteBtn").on('click',function()
+  {  
+  	$(".form_result").html('');
+
+
+  	$("#deleteModalId").modal("show");
+  	$tr=$(this).closest('tr');
+  	var data=$tr.children('td').map(function()
+  	{
+  		return $(this).text();
+  	}).get();
+  	$("#hiddenId").val(data[0]);
+
+  });
+
+  $("#deleteFormId").on('submit',function(event)
+  {
+  	event.preventDefault();
+
+
+  	var id=$("#hiddenId").val();
+  	$.ajax({
+  		url:"/admin/slider/"+id,  
+  		type:"delete",
+  		data:$(this).serialize(),
+  		dataType:"json",
+
+  		success:function(data)
+  		{
+
+  			var html = '<div class="alert alert-success">' +data.success+ '</div>';
+  			$(".form_result").html(html);
+
+  		}
+
+  	});
+
+  });
+  //delete modal ends
+});
 </script>
 @endsection

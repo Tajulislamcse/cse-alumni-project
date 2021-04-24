@@ -38,8 +38,7 @@ class PostCategoryController extends Controller
       //create store category model's object
       $storeCategoryModel=resolve('App\ViewModels\IStoreCategoryModel');
       $storeCategoryModel->store();
-      session()->flash('message','Category has been created successfully');
-      return redirect('admin/category');
+      return response()->json(['success'=>'Category created successfully']);
     }
 
     /**
@@ -76,7 +75,7 @@ class PostCategoryController extends Controller
      //create store category model's object
       $storeCategoryModel=resolve('App\ViewModels\IStoreCategoryModel'); 
       $storeCategoryModel->update($id);
-      return redirect()->back(); 
+      return response()->json(['success'=>'category updated successfully']); 
     }
 
     /**
@@ -90,7 +89,7 @@ class PostCategoryController extends Controller
       //create store category model's object
       $viewCategoryModel=resolve('App\ViewModels\IViewCategoryModel');
       $viewCategoryModel->delete($id);
-      return redirect('admin/category');
+    
       
     }
 }

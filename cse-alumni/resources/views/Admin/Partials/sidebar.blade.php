@@ -44,7 +44,7 @@
 							</p>
 						</a>
 					</li>
-				<!--PostCategory-->
+					<!--PostCategory-->
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link" >
 							<i class="fa fa-list"></i>
@@ -55,7 +55,7 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="#" data-toggle="modal" data-target="#PostCategory"class="nav-link">
+								<a href="#" id="addCategory" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Add New Category</p>
 								</a>
@@ -68,8 +68,7 @@
 							</li>
 						</ul>
 					</li>
-				<!--/PostCategory-->
-					
+					<!--/PostCategory-->
 					<!--posts-->
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
@@ -106,7 +105,7 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="#" data-toggle="modal" data-target="#sliderImg"class="nav-link">
+								<a href="#" class="nav-link" id="addSlider">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Add New Slider</p>
 								</a>
@@ -155,10 +154,8 @@
 		</div>
 		<!-- /.sidebar -->
 	</aside>
-
-
-	<!--SliderModal-->
-	<div class="modal fade" id="PostCategory">
+	<!--category-->
+	<div class="modal fade" id="createCategoryModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -167,13 +164,14 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="/admin/category" method="post">
+				<form id="createCategoryForm" method="post">
 					@csrf 
 					<div class="modal-body">
+						<span class="form_result"></span>
 						<div class="form-group">
 							<label for="category">category-name</label>
 							<div>
-								<input class="form-control" type="text" name="name"/>
+								<input class="form-control" type="text" name="category"/>
 							</div>
 						</div>
 					</div>
@@ -188,8 +186,8 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.SliderModal -->
-		<!--SliderModal-->
-	<div class="modal fade" id="sliderImg">
+	<!--SliderModal-->
+	<div class="modal fade" id="createSliderModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -198,11 +196,12 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="/admin/slider" method="post" enctype="multipart/form-data">
+				<form method="post" id="createSliderForm" enctype="multipart/form-data">
 					@csrf 
 					<div class="modal-body">
+						<span class="form_result"></span>
 						<div class="form-group">
-							<label for="image">image</label>
+						
 							<div>
 								<input class="form-control" type="file" name="slider"/>
 							</div>
@@ -218,4 +217,87 @@
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
-	<!-- /.SliderModal -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+           /*Category starts*/
+
+          	$("#addCategory").on('click',function()
+			{
+				$('#createCategoryModal').modal('show');
+				$('#createCategoryForm')[0].reset();
+				$('.form_result').html('');
+			});
+			$("#createCategoryForm").on('submit',function(event)
+			{
+				event.preventDefault();
+
+				$.ajax({
+					url:"/admin/category",  
+					method:"POST",
+					data:$(this).serialize(),
+					dataType:"json",
+					success:function(data)
+					{
+
+						var html = '<div class="alert alert-success">' + data.success + '</div>';
+						$(".form_result").html(html);
+
+					},
+					error:function(error)
+					{
+						var html = '<div class="alert alert-danger">' +error.responseJSON.errors.category+ '</div>';
+						$(".form_result").html(html);
+
+					}
+
+				});
+			
+
+
+			});
+		  /*category ends*/
+
+        /*Slider starts*/
+			$("#addSlider").on('click',function()
+			{
+				$('#createSliderModal').modal('show');
+				$('#createSliderForm')[0].reset();
+				$('.form_result').html('');
+
+
+			});
+			$("#createSliderForm").on('submit',function(event)
+			{
+				event.preventDefault();
+
+				$.ajax({
+					url:"/admin/slider",  
+					method:"POST",
+					data:new FormData(this),
+					dataType:"json",
+					cache: false,
+					contentType: false,
+					processData: false,
+					success:function(data)
+					{
+
+						var html = '<div class="alert alert-success">' + data.success + '</div>';
+						$(".form_result").html(html);
+
+					},
+					error:function(error)
+					{
+						var html = '<div class="alert alert-danger">' +error.responseJSON.errors.slider+ '</div>';
+						$(".form_result").html(html);
+
+					}
+
+				});
+
+			});
+			/*slider ends*/
+		});
+
+
+</script>

@@ -20,56 +20,28 @@
 				<div class="card">
 					<!-- /.card-header -->
 					<div class="card-body">
-						<table id="example1" class="table table-bordered table-striped">
+						<table id="categoryTable" class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th class="text-center" style="width: 50%">name</th>
-									<th class="text-center" style="width: 50%">Action</th>
+									<th>id</th>
+									<th>name</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach ($categoryObjects as $categoryObject)
 								<tr>
-									<td class="text-center">
+									<td>
+										{{$categoryObject->getId()}}
+									</td>
+									<td>
 										{{$categoryObject->getName()}}
 									</td>
-									<td class="project-actions text-center">
-										<button type="submit" class="btn btn-info btn-sm" href="#"  data-toggle="modal" data-target="#myModal-{{$categoryObject->getId()}}">
+									<td class="project-actions">
+										<button type="button" class="btn btn-info btn-sm editBtn" href="#">
 											<i class="fas fa-pencil-alt"> </i>
 											Edit
 										</button>
-										<!--Modal starts from here-->
-										<!-- Modal -->
-										<div class="modal fade" id="myModal-{{$categoryObject->getId()}}">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h4 class="modal-title">Edit category</h4>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<form action="/admin/category/{{$categoryObject->getId()}}" method="post">
-														@csrf
-														@method('PUT') 
-														<div class="modal-body">
-															<div class="form-group">
-																<div>
-																	<input class="form-control" type="text" name="name" value="{{$categoryObject->getName()}}" />
-																</div>
-															</div>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-															<button type="submit" class="btn btn-primary">Submit</button>
-														</div>
-													</form>
-												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div>
-										<!-- /.modal -->                                              
 										<form id="delete-form-{{$categoryObject->getId()}}" action="/admin/category/{{$categoryObject->getId()}}" style="display: none;" method="POST">
 											@csrf
 											@method('DELETE')
@@ -101,19 +73,97 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<!--Modal starts from here-->
+<!-- Modal -->
+<div class="modal fade" id="modalId">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Edit category</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form id="formId" method="post">
+				@csrf
+				@method('PUT') 
+				<input type="hidden" id="hiddenId"> 
+				<div class="modal-body">
+					<span id="form_result"></span>
+					<div class="form-group">
+						<div>
+							<input class="form-control" type="text" name="category"/>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 @endsection 
 @section('scripts')
 <script>
-	$(function () {
-		$("#example1").DataTable({
+	$(document).ready(function () {
+		$("#categoryTable").DataTable({
 			columnDefs: [
 			{
 					// column index (start from 0)
-					targets: [1],
+					targets: [2],
 					orderable: false, // set orderable false for selected columns
 				},
 				],
 			});
+		$(".editBtn").on('click',function()
+		{  
+			$("#form_result").html('');
+			$("#formId")[0].reset();
+
+			$("#modalId").modal("show");
+			$tr=$(this).closest('tr');
+			var data=$tr.children('td').map(function()
+			{
+				return $(this).text();
+			}).get();
+			$("#hiddenId").val(data[0]);
+
+		});
+		
+		$("#formId").on('submit',function(event)
+		{
+			event.preventDefault();
+			
+
+			var id=$("#hiddenId").val();
+			$.ajax({
+				url:"/admin/category/"+id,  
+				method:"POST",
+				data:$(this).serialize(),
+				dataType:"json",
+				success:function(data)
+				{
+
+					var html = '<div class="alert alert-success">' + data.success + '</div>';
+					$("#form_result").html(html);
+
+				},
+				error:function(error)
+				{
+					var html = '<div class="alert alert-danger">' +error.responseJSON.errors.category+ '</div>';
+					$("#form_result").html(html);
+
+				}
+
+			});
+
+		});
+
 	});
 </script>
 @endsection

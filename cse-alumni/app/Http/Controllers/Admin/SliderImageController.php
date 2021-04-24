@@ -29,7 +29,8 @@ class SliderImageController extends Controller
 	  //create store slider model's object
 		$storeSliderModel=resolve('App\ViewModels\IStoreSliderModel');
 		$storeSliderModel->store();
-		return redirect('admin/slider');
+		return response()->json(['success'=>'slider added successfully']);
+		
 	}
 	/**
 	 * Display the specified resource.
@@ -63,13 +64,15 @@ class SliderImageController extends Controller
 	 //create store slider model's object
 		$storeSliderModel=resolve('App\ViewModels\IStoreSliderModel');
 		$storeSliderModel->update($id);
-		return redirect('admin/slider');
+		return response()->json(['success'=>'slider updated successfully']);
+		
 	}
 	public function destroy($id)
 	{
 		$viewSliderModel=resolve('App\ViewModels\IViewSliderModel');
 		$viewSliderModel->delete($id);
-		return redirect('admin/slider');
+        return response() ->json(['code'=>200,'success' => 'Successfully Deleted']);
+
 	}
 	/**
 	 * Remove the specified resource from storage.

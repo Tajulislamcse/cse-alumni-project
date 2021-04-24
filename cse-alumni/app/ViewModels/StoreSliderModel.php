@@ -25,7 +25,11 @@ class StoreSliderModel implements IStoreSliderModel
 		$this->_sliderService->update($sliderObject,$id);
     }
 	public function loadFields(Request $request)
-	{
+	{  
+		$validateData=$request->validate([
+			'slider'=>'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048'
+
+		]);
 		$sliderFile=$request->file('slider');
 		$sliderName=time().'.'.$sliderFile->getClientOriginalExtension();
         $resizeSlider = Image::make($sliderFile)->resize(1110,660)->stream();

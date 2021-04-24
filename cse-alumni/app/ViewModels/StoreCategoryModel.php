@@ -19,7 +19,10 @@ class StoreCategoryModel implements IStoreCategoryModel
 	}
 	public function loadFields(Request $request)
 	{
-		$this->name=$request->name;
+		$validateData=$request->validate([
+			'category'=>'required'
+		]);
+		$this->name=$request->category;
 	}
 	public function update($id)
 	{

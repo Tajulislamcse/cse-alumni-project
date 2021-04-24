@@ -6,6 +6,8 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge" />
 	<title>CSE Alumni Association</title>
 	@include('admin.partials.css')
+	@include('admin.partials.js')
+	
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
@@ -19,7 +21,6 @@
 		@yield('content') 
 		@include('admin.partials.footer')
 	</div>
-	@include('admin.partials.js')
 	@yield('scripts')
 </body>
 </html>
