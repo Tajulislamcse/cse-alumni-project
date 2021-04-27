@@ -17,7 +17,7 @@ class ProfileController extends Controller
 	public function index()
 	{
 		$viewAlumniModel=resolve('App\ViewModels\IViewAlumniCommitteeModel');
-		list($presidents,$secretaries,$members)=$viewAlumniModel->getAll();
-		return view('committeeMember.index',compact('presidents','secretaries','members'));
+		list($president,$secretaries,$members)=$viewAlumniModel->getAll();
+		return view('committeeMember.index',compact('president','secretaries','members'));
 	}
 }

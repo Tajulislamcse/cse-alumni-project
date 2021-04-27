@@ -10,15 +10,14 @@
 				<h3 class="p-2" style="background-color: pink;color: inherit;">Alumni Association Committee Members</h3>
 			</div>
 		</div>
+<!--president information starts-->
 		<div class="row">
 			<div class="col-md-12">
 				<h3 class="p-2">President</h3>
 			</div>
 		</div>
-		@if(count($presidents)==null)  <p>There is no record exist for president</p>
-		@else
+	@if($president)
 		<div class="row">
-			@foreach($presidents as $president)
 			<div class="col-md-4 padding_program ">
 				<a class="faculty_Modals" data-toggle="modal" data-target="#myModal-{{$president->getId()}}">
 					<div class="row card">
@@ -90,15 +89,20 @@
 					</div>
 				</div>
 			</div>
-			@endforeach
+			@else
+	      <p>There is no information exist for president</p>
+			@endif
+			
 		</div>
-		@endif
+
+		
+<!--president information ends-->
 		<div class="row">
 			<div class="col-md-12">
 				<h3 class="p-2">Secretary</h3>
 			</div>
 		</div>
-		@if(count($secretaries)==null) 
+		@if(count($secretaries)==0) 
 		<p>There is no record exist for secretary</p>
 		@else       
 		<div class="row">
@@ -183,7 +187,7 @@
 				<h3 class="p-2">Members</h3>
 			</div>
 		</div>
-		@if(count($members)==null) 
+		@if(count($members)==0) 
 		<p class="pb-3">There are no record exist for members</p>
 		@else    
 		<div class="row">
