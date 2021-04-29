@@ -162,8 +162,8 @@
 			$("#myModal").on("show.bs.modal", function(e) {
 				var profession= $(e.relatedTarget).data('target-profession');
 				var date= $(e.relatedTarget).data('target-date');
-				$(".modal-body #fetchJob").text(profession);
-				$(".modal-body #fetchDate").text(date);
+				$("#fetchJob").text(profession);
+				$("#fetchDate").text(date);
 			});
 		});  
 	</script>

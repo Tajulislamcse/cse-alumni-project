@@ -42,7 +42,7 @@ class AlumniService implements IAlumniService
 	public function updateProfession(IAlumni $alumni,$id)
 	{
 		$updatedProfession=$this->_professionRepository->updateProfession($alumni,$id);
-		$this->_notificationService->sendNotificationToAlumniMembers($updatedProfession);
+	$this->_notificationService->sendNotificationToAlumniMembers($updatedProfession);
 	}
 	public function updateImage(IAlumni $alumni,$id)
 	{

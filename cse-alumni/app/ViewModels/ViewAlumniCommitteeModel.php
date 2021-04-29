@@ -13,18 +13,18 @@ class ViewAlumniCommitteeModel implements IViewAlumniCommitteeModel
 	{
 		$committees=$this->_alumniCommitteeService->getAll();
 		$president="";
-		$secretaries=[];
+		$secretary="";
 		$members=[];
 		foreach ($committees as $committee)
 		{
 			if($committee->getDesignation()=='president')
 				$president=$committee;
 			elseif($committee->getDesignation()=='secretary')
-				$secretaries[]=$committee;
+				$secretary=$committee;
 			else
 				$members[]=$committee;
 		}
-		return array($president,$secretaries,$members);   
+		return array($president,$secretary,$members);   
 	
 	}
 

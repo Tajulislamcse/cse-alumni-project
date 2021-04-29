@@ -9,6 +9,11 @@
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				</ol>
 				<div class="carousel-inner">
+					@foreach($sliderObjects as $key => $sliderObject)
+					<div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+						<img src="{{asset('storage/images/slider/'. $sliderObject->getUrl())}}"  alt="sliders"> 
+					</div>
+					@endforeach
 				</div>
 				<a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true">     </span>
@@ -30,9 +35,7 @@
 			</p>
 			<p class="text-justify mb-3 mt-0">Welcome to the <strong style="color: #000080;">Comilla University Computer
 			Science and Engineering Alumni (COUCSEALUMNI)</strong> <em><strong>Community</strong></em> of the Department
-			of Computer Science and Engineering,  Comilla University. Let our relationship with each other to
-			continue after the graduation also. The Alumni Association is a best place for you to stay connected and
-		engaged to your alma mater through events, programs and networking opportunities and campus updates.</p>
+			of Computer Science and Engineering,  Comilla University. There were demands for a common platform for relationships with each other to continue after graduation also. The Alumni Association is the best place for you to get alumni member's updates and also our department's updates.</p>
 	</div>
 </div>
 <!--News and Events section start from here-->
