@@ -24,8 +24,8 @@ class StoreAlumniCommitteeModel implements IStoreAlumniCommitteeModel
 	}
 	public function store()
 	{
-		$object=AlumniCommitteeFactory::setProperty($this);
-		$this->_alumniCommitteeService->store($object);
+		$alumniObject=AlumniCommitteeFactory::setProperty($this);
+		$this->_alumniCommitteeService->store($alumniObject);
 	}
 	public function loadFields(Request $request)
 	{
