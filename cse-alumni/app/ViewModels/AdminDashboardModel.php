@@ -3,7 +3,7 @@ namespace App\ViewModels;
 use App\Repositories\IAlumniMainRepository;
 use App\Repositories\IAlumniCommitteeRepository;
 use App\Repositories\IPostRepository;
-class AdminDashboardModel
+class AdminDashboardModel implements IAdminDashboardModel
 {
 	private $_alumniMainRepository;
 	private $_alumniCommitteeRepository;

@@ -5,7 +5,7 @@ use App\Services\IAlumniCommitteeService;
 use App\Factories\AlumniCommitteeFactory;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-class StoreAlumniCommitteeModel
+class StoreAlumniCommitteeModel implements IStoreAlumniCommitteeModel
 {
 	private $_alumniCommitteeService;
 	public $name;

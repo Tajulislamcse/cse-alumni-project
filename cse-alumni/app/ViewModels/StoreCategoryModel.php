@@ -17,6 +17,11 @@ class StoreCategoryModel implements IStoreCategoryModel
       $categoryObject=CategoryFactory::setProperty($this);
       $this->_categoryService->store($categoryObject);
 	}
+	public function update($id)
+	{
+      $categoryObject=CategoryFactory::setProperty($this);
+      $this->_categoryService->update($categoryObject,$id);
+    }
 	public function loadFields(Request $request)
 	{
 		$validateData=$request->validate([
@@ -24,9 +29,5 @@ class StoreCategoryModel implements IStoreCategoryModel
 		]);
 		$this->name=$request->category;
 	}
-	public function update($id)
-	{
-      $categoryObject=CategoryFactory::setProperty($this);
-      $this->_categoryService->update($categoryObject,$id);
-    }
+
 }
