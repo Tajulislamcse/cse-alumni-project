@@ -41,7 +41,7 @@ class StoreAlumniModel implements IStoreAlumniModel
 			'alumniId' => 'required|numeric|unique:users|digits:8',
 			'name'=>'required',
 			'batch'=>'required',
-			'image'=>'image|mimes:jpeg,jpg,png,gif,svg|max:2048',
+			'image'=>'image|mimes:jpeg,jpg,png,gif,svg,pdf,doc,docx,pptx|max:2048',
 			'session'=>'required',
 			'bloodgroup'=>'required',
 			'profession'=>'nullable',

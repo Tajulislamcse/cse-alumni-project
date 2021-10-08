@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'http://127.0.0.1:8000/login'
+        'http://127.0.0.1:8000/login',
+        '/pay-via-ajax', '/success','/cancel','/fail','/ipn'
     ];
 }
