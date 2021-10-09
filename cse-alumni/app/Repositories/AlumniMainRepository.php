@@ -116,11 +116,12 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 	}
 
 	public function todaysRegisteredAlumnis()
-  { 
+   { 
   	$roleName='GeneralMember';
 		return $this->model->whereHas('roles', function ($q) use ($roleName) {
 			$q->where([
-				'name'=>$roleName
+				['name','=',$roleName],
+				['users.status','=',1]
 			]);
 		})->whereDate('created_at',Carbon::today())->get();
 	}

@@ -60,4 +60,8 @@ class User extends Authenticatable
 	{
 		return $this->roles()->whereIn('name',$roles)->first()!=null;
 	}
+	public function batch()
+	{
+		return $this->belongsTo('App\Models\Batch');
+	}
 }

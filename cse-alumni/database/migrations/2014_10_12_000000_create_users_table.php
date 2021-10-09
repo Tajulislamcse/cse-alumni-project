@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('alumniId')->nullable();
             $table->string('name');
-            $table->string('batch')->nullable();
+            $table->string('batch_id')->nullable();
             $table->string('session')->nullable();
             $table->string('bloodgroup')->nullable();
             $table->string('image')->nullable();

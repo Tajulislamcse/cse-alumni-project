@@ -57,13 +57,13 @@
 							<li class="nav-item">
 								<a href="#" id="addCategory" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Add New Category</p>
+									<p>Add Category</p>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a href="/admin/category" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
-									<p>All Categories</p>
+									<p>Category list</p>
 								</a>
 							</li>
 						</ul>
@@ -82,18 +82,43 @@
 							<li class="nav-item">
 								<a href="/admin/post/create" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Add New Post</p>
+									<p>Add Post</p>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a href="/admin/post" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
-									<p>All Posts</p>
+									<p>Post list</p>
 								</a>
 							</li>
 						</ul>
 					</li>
 					<!--/posts-->
+					<!--Batch-->
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon far fa-newspaper"></i>
+							<p>
+								Batch Management
+								<i class="fas fa-angle-left right"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="#" class="nav-link" id="addBatch">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Add Batch</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="/admin/batch" class="nav-link">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Batch list</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+                    <!--/Batch-->
 					<!--slider-->
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link" >
@@ -107,17 +132,18 @@
 							<li class="nav-item">
 								<a href="#" class="nav-link" id="addSlider">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Add New Slider</p>
+									<p>Add Slider</p>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a href="/admin/slider" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
-									<p>All Sliders</p>
+									<p>Slider list</p>
 								</a>
 							</li>
 						</ul>
 					</li>
+
 					<li class="nav-header">EXAMPLES</li>
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
@@ -154,12 +180,43 @@
 		</div>
 		<!-- /.sidebar -->
 	</aside>
+		<!--category-->
+	<div class="modal fade" id="createBatchModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title text-center">Add New batch</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form id="createBatchForm" method="post">
+					@csrf 
+					<div class="modal-body">
+						<span class="form_result"></span>
+						<div class="form-group">
+							<label for="batch">batch-name</label>
+							<div>
+								<input class="form-control" type="text" name="name"/>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
 	<!--category-->
 	<div class="modal fade" id="createCategoryModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title text-center">Create New Category</h4>
+					<h4 class="modal-title text-center">Add New Category</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -219,7 +276,43 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function () {
+           /*batch starts*/
 
+          	$("#addBatch").on('click',function()
+			{
+				$('#createBatchModal').modal('show');
+				$('#createBatchForm')[0].reset();
+				$('.form_result').html('');
+			});
+			$("#createBatchForm").on('submit',function(event)
+			{
+				event.preventDefault();
+
+				$.ajax({
+					url:"/admin/batch",  
+					method:"POST",
+					data:$(this).serialize(),
+					dataType:"json",
+					success:function(data)
+					{
+
+						var html = '<div class="alert alert-success">' + data.success + '</div>';
+						$(".form_result").html(html);
+
+					},
+					error:function(error)
+					{
+						var html = '<div class="alert alert-danger">' +error.responseJSON.errors.name+ '</div>';
+						$(".form_result").html(html);
+
+					}
+
+				});
+			
+
+
+			});
+		  /*batch ends*/
            /*Category starts*/
 
           	$("#addCategory").on('click',function()

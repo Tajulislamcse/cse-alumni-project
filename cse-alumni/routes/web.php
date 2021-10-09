@@ -7,7 +7,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','auth
 	Route::resources([
 		'category' => 'PostCategoryController',
 		'post' => 'PostController',
-		'slider'=>'SliderImageController',
+		'slider' => 'SliderImageController',
+		'batch' => 'BatchController'
 	]);
 });
 //general member's routes
