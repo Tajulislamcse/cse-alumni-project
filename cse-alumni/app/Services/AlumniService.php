@@ -6,7 +6,7 @@ use App\Repositories\IProfessionRepository;
 use App\Services\INotificationService;
 
 class AlumniService implements IAlumniService
-{ 
+{
 	private $_alumniMainRepository;
 	private $_professionRepository;
 	private $_notificationService;
@@ -36,9 +36,9 @@ class AlumniService implements IAlumniService
 	public function updateBasicInfo(IAlumni $alumni,$id)
 	{
 		$this->_alumniMainRepository->updateBasicInfo($alumni,$id);
-     
+
 	}
-	
+
 	public function updateProfession(IAlumni $alumni,$id)
 	{
 		$updatedProfession=$this->_professionRepository->updateProfession($alumni,$id);

@@ -13,7 +13,7 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 	}
 
 	public function store($alumniObject)
-	{  
+	{
 		$alumniArray=[
 			'alumniId'=>$alumniObject->getAlumniId(),
 			'name'=>$alumniObject->getName(),
@@ -47,7 +47,7 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
  }
 
  public function updateImage($alumniObject,$id)
- {  
+ {
 		//delete old image
  	$alumni=parent::get($id);
  	Storage::disk('public')->delete('images/Alumni/'.$alumni->image);
@@ -58,7 +58,7 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
  }
 
  public function getAllByBatch($batchId)
- {  
+ {
  	$roleName='GeneralMember';
  	$specificBatchAlumnis=$this->model->whereHas('roles', function ($q) use ($roleName,$batchId) {
  		$q->where([
@@ -103,7 +103,7 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 	}
 
 	public function todaysRegisteredAlumnis()
-   { 
+   {
   	$roleName='GeneralMember';
 		return $this->model->whereHas('roles', function ($q) use ($roleName) {
 			$q->where([
@@ -113,7 +113,7 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 		})->whereDate('created_at',Carbon::today())->get();
 	}
 	public function getRegisteredGeneralMemberBatch()//for showing dynamic alumni batch list.
-	{  
+	{
 		$roleName='GeneralMember';
 		return $this->model->whereHas('roles', function ($q) use ($roleName) {
 			$q->where([

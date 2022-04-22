@@ -5,10 +5,12 @@ class ProfileController extends Controller
 {
 	public function create()
 	{
-		return view('committeeMember.create');
+        $batchRepository = resolve('App\Repositories\BatchRepository');
+		$batches = $batchRepository->getAll();
+		return view('committeeMember.create',compact('batches'));
 	}
 	public function store()
-	{ 
+	{
 		$storeAlumniModel=resolve('App\ViewModels\IStoreAlumniCommitteeModel');
 		$storeAlumniModel->store();
 		session()->flash('message','Your registration has been submitted and is pending approval by an admin. If your account is approved, then you will notify via email. You can\'t log in until your account is approved.');
