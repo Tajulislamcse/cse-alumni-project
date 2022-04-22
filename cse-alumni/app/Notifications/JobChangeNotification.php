@@ -11,7 +11,7 @@ class JobChangeNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     public $profession;
-  
+
 
     /**
      * Create a new notification instance.

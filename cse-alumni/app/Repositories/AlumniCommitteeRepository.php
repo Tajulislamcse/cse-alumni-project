@@ -13,7 +13,7 @@ class AlumniCommitteeRepository extends BaseRepository implements IAlumniCommitt
 	{
 		$committeeArray=[
 			'name'=>$alumniObject->getName(),
-			'batch'=>$alumniObject->getBatch(),
+			'batch_id'=>$alumniObject->getBatch(),
 			'image'=>$alumniObject->getImage(),
 			'bloodgroup'=>$alumniObject->getBloodgroup(),
 			'designation'=>$alumniObject->getDesignation(),
@@ -21,6 +21,7 @@ class AlumniCommitteeRepository extends BaseRepository implements IAlumniCommitt
 			'password'=>$alumniObject->getPassword(),
 			'gender'=>$alumniObject->getGender()
 		];
+		//dd($committeeArray);
 		$committee=$this->model->create($committeeArray);
 		$committee->roles()->attach(Role::where('name','CommitteeMember')->first());
 		return $committee;

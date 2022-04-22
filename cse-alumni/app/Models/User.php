@@ -14,7 +14,7 @@ class User extends Authenticatable
 	protected $fillable = [
 		'alumniId',
 		'name',
-		'batch',
+		'batch_id',
 		'session',
 		'bloodgroup',
 		'designation',

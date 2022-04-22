@@ -1,7 +1,7 @@
 @extends('generalMember.layouts.master') 
 @section('main-content')
 <div class="content-wrapper">
-	<p class="text-center py-4">{{$batch}} batch alumni list</p>
+	<p class="text-center py-4">{{$alumniObjects[0]->getBatch()}} batch alumni list</p>
 	<!-- Main content -->
 	<section class="content">
 		<div class="row">

@@ -9,9 +9,9 @@ class ViewAlumniModel implements IViewAlumniModel
 		$this->_alumniService=$alumniService;
 
 	}
-	public function getAllByBatch($batch)
+	public function getAllByBatch($batchId)
 	{
-		return $this->_alumniService->getAllByBatch($batch);
+		return $this->_alumniService->getAllByBatch($batchId);
 	
 	}
 	public function get($id)

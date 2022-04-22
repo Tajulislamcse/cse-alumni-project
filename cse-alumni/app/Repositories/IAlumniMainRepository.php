@@ -7,7 +7,7 @@ interface IAlumniMainRepository
 	public function updateImage($alumniObject,$id);
 	public function getAlumnis($professionModel);
 	public function getCount();
-	public function getRegisteredAlumniBatch();
+	public function getRegisteredGeneralMemberBatch();
 	public function todaysRegisteredAlumnis();
 	public function getAllByBatch($batch);
 	public function get($id);

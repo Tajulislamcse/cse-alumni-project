@@ -49,8 +49,10 @@
 					color: #ffffff;"><i class="far fa-newspaper"></i> NEWS</a>
 				</li>
 			</ul>
-			<div class="tab-content" id="myTabContent">
+			
+		    <div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="notice" role="tabpanel" aria-labelledby="notice-tab">
+					{{--
 					@foreach($postObjects['news'] as $news)
 					<ul class="list-unstyled item-lists">
 						<li>
@@ -62,8 +64,11 @@
 						</li>
 					</ul>
 					@endforeach
+					--}}
 				</div>
 			</div>
+			
+		
 		</div>
 		<!--news section ends-->
 		<!--events section starts-->
@@ -74,8 +79,10 @@
 					color: #ffffff;"><i class="far fa-newspaper"></i>Events</a>
 				</li>
 			</ul>
+			
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="notice" role="tabpanel" aria-labelledby="notice-tab">
+					{{--
 					@foreach($postObjects['events'] as $events)
 					<ul class="list-unstyled item-lists">
 						<li>
@@ -87,8 +94,10 @@
 						</li>
 					</ul>
 					@endforeach
+					--}}
 				</div>
 			</div>
+		
 		</div>
 		<!--/events-->
 	</div>

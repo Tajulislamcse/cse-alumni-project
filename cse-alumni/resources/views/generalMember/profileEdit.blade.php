@@ -122,7 +122,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary disableDoubleClick">Submit</button>
+					<button type="submit" class="btn btn-primary disableDoubleClick" onClick="disabled=true;">Submit</button>
 				</div>
 			</form>
 		</div>
@@ -147,7 +147,7 @@
 						<input type="text" class="form-control" name="profession" value="{{old('profession',$alumniObject->getProfession())}}" />
 					</div>
 					<div class="form-group">
-						<label for="date">AppointmentDate:</label>
+						<label for="date">Appointment Date:</label>
 						<input type="text" class="form-control" name="appointmentDate" id="datepicker" />
 					</div>
 				</div>
@@ -155,7 +155,7 @@
 
 
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary" onClick="disabled=true;">Submit</button>
 				</div>
 			</form>
 		</div>

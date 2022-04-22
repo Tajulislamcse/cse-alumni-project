@@ -28,7 +28,7 @@ class AlumniCommitteeFactory
 		$alumniObject->setName($comitteeModel['name']);
 		$alumniObject->setDesignation($comitteeModel['designation']);
 		$alumniObject->setImage($comitteeModel['image']);
-		$alumniObject->setBatch($comitteeModel['batch']);
+		$alumniObject->setBatch($comitteeModel->batch->name);
 		$alumniObject->setBloodgroup($comitteeModel['bloodgroup']);
 		$alumniObject->setProfession($comitteeModel->profession['name']);
 		$alumniObject->setEmail($comitteeModel['email']);

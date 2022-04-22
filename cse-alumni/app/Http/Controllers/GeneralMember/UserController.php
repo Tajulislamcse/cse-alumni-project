@@ -10,7 +10,9 @@ class UserController extends Controller
 	}
 	public function create()
 	{
-		return view('generalMember.register');
+		$batchRepository = resolve('App\Repositories\BatchRepository');
+		$batches = $batchRepository->getAll();
+		return view('generalMember.register', compact('batches'));
 	}
 	public function store()
 	{

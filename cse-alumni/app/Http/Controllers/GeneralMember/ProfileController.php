@@ -20,15 +20,15 @@ class ProfileController extends Controller
 		$updateImageModel->update($id);
 		return response()->json(['success'=>'Image updated successfully']);
 	}
-	public function show($batch)
+	public function show($batchId)
 	{   
 		if(!auth()->user()->hasAnyRole(['admin','GeneralMember','CommitteeMember']))
 		{
 			abort(401,"This is role is not allowed");
 		}
 		$viewAlumniModel=resolve('App\ViewModels\IViewAlumniModel');
-		$alumniObjects=$viewAlumniModel->getAllByBatch($batch);
-		return view('generalMember.index',compact('alumniObjects','batch'));
+		$alumniObjects=$viewAlumniModel->getAllByBatch($batchId);
+		return view('generalMember.index',compact('alumniObjects','batchId'));
 	}
 	public function edit($id)
 	{

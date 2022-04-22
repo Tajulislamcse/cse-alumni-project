@@ -42,14 +42,9 @@
 											<div class="input--style-5" style="width: 700px">
 												<select name="batch" class="@error('batch') is-invalid @enderror">
 													<option disabled="disabled" selected="selected">please select batch from the option</option>
-													<option value="cse-1st" {{old('batch')=='cse-1st'?'selected':''}}>cse-1st</option>
-													<option value="cse-2nd" {{old('batch')=='cse-2nd'?'selected':''}}>cse-2nd</option>
-													<option value="cse-3rd" {{old('batch')=='cse-3rd'?'selected':''}}>cse-3rd</option>
-													<option value="cse-4th"
-													{{old('batch')=='cse-4th'?'selected':''}}>cse-4th</option>
-													<option value="cse-5th" {{old('batch')=='cse-5th'?'selected':''}}>cse-5th</option>
-													<option value="cse-6th" {{old('batch')=='cse-6th'?'selected':''}}>cse-6th</option>
-													<option value="cse-7th" {{old('batch')=='cse-7th'?'selected':''}}>cse-7th</option>
+													@foreach($batches as $batch)
+													<option value="{{$batch->id}}">{{$batch->name}}</option>
+													@endforeach
 												</select>
 												<div class="select-dropdown"></div>
 												@error('batch')

@@ -27,12 +27,12 @@
 			<li class="nav-item mx-0 mx-lg-1 dropdown">
 				<a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger" data-toggle="dropdown" href="#">Alumni List</a>
 
-			@if($batches->count())
+			@if($generalMembers->count())
 			<ul class="dropdown-menu">
-				@foreach($batches as $batch)
+				@foreach($generalMembers as $generalMember)
 				<li class="dropdown-item">
-					<form action="/user/profiles/{{$batch->batch}}" method="GET">
-						<button type="submit">{{$batch->batch}} batch</button>
+					<form action="/user/profiles/{{$generalMember->batch->id}}" method="GET">
+						<button type="submit">{{$generalMember->batch->name}} batch</button>
 					</form>
 				</li>
 				@endforeach
@@ -52,8 +52,8 @@
 		<li class="nav-item mx-0 mx-lg-1">
 			<a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger" href="/login">LogIn</a>
 		</li>
-		@if (Route::has('register')) 
-		@endif 
+		@if (Route::has('register'))
+		@endif
 		@else
 		<li class="nav-item mx-0 mx-lg-1 dropdown">
 			<a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 js-scroll-trigger notificationToggle" data-toggle="dropdown" href="#">Notifications
@@ -67,7 +67,7 @@
 					@foreach(auth()->user()->unreadNotifications as $notification)
 					<li class="dropdown-item p-3 changeBgColorUnRead" style="background-color:lightgray;cursor: pointer"data-toggle="modal" data-target="#myModal" data-target-profession="{{$notification->data['profession']}}"
 						data-target-date="{{$notification->data['appointmentDate']}}" >
-						<b style="color:green">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}} batch&#41;</b>
+						<b style="color:green">{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']['name']}} batch&#41;</b>
 						<span style="color:#000">changed his job</span>
 						<br/>
 						<small style="color:#90949C">
@@ -80,7 +80,7 @@
 						<li class="dropdown-item p-3" data-toggle="modal" data-target="#myModal" data-target-profession="{{$notification->data['profession']}}
 							" data-target-date="{{$notification->data['appointmentDate']}}" style="cursor: pointer;">
 							<b style="color:green">
-								{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']}} batch&#41;</b>
+								{{ucwords($notification->data['name'])}} &#40;{{$notification->data['batch']['name']}} batch&#41;</b>
 								<span style="color:#000">changed his job</span>
 								<br/>
 								<small style="color:#90949C">
@@ -165,5 +165,5 @@
 				$("#fetchJob").text(profession);
 				$("#fetchDate").text(date);
 			});
-		});  
+		});
 	</script>

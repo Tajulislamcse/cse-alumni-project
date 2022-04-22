@@ -11,6 +11,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','auth
 		'batch' => 'BatchController'
 	]);
 });
+Route::resource('/admin/registeruser','Admin\RegisteredUserController');
+
 //general member's routes
 Route::group(['prefix'=>'user','namespace'=>'GeneralMember'],function()
 {

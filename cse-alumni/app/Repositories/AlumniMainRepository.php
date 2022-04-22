@@ -17,7 +17,7 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 		$alumniArray=[
 			'alumniId'=>$alumniObject->getAlumniId(),
 			'name'=>$alumniObject->getName(),
-			'batch'=>$alumniObject->getBatch(),
+			'batch_id'=>$alumniObject->getBatch(),
 			'session'=>$alumniObject->getSession(),
 			'image'=>$alumniObject->getImage(),
 			'bloodgroup'=>$alumniObject->getBloodgroup(),
@@ -57,13 +57,13 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
  	parent::update($imageArray,$id);
  }
 
- public function getAllByBatch($batch)
+ public function getAllByBatch($batchId)
  {  
  	$roleName='GeneralMember';
- 	$specificBatchAlumnis=$this->model->whereHas('roles', function ($q) use ($roleName,$batch) {
+ 	$specificBatchAlumnis=$this->model->whereHas('roles', function ($q) use ($roleName,$batchId) {
  		$q->where([
  			['name','=',$roleName],
- 			['users.batch','=',$batch]
+ 			['users.batch_id','=',$batchId]
  		]);
  	})->get();
  	$alumniObjects=AlumniFactory::convertIntoObjects($specificBatchAlumnis);
@@ -102,19 +102,6 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 		})->count();
 	}
 
-	public function getRegisteredAlumniBatch()//for showing dynamic alumni batch list.
-	{  
-		$roleName='GeneralMember';
-		return $this->model->whereHas('roles', function ($q) use ($roleName) {
-			$q->where([
-				['name','=',$roleName],
-				['users.status','=',1],
-				['users.batch','!=',null]
-			]);
-		})->distinct()
-		->get(['batch']);
-	}
-
 	public function todaysRegisteredAlumnis()
    { 
   	$roleName='GeneralMember';
@@ -125,5 +112,18 @@ class AlumniMainRepository extends BaseRepository implements IAlumniMainReposito
 			]);
 		})->whereDate('created_at',Carbon::today())->get();
 	}
+	public function getRegisteredGeneralMemberBatch()//for showing dynamic alumni batch list.
+	{  
+		$roleName='GeneralMember';
+		return $this->model->whereHas('roles', function ($q) use ($roleName) {
+			$q->where([
+				['name','=',$roleName],
+				['users.status','=',1],
+				['users.batch_id','!=',null]
+			]);
+		})->distinct()
+		->get(['batch_id']);
+	}
+
 
 }

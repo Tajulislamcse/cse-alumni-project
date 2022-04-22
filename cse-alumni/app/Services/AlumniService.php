@@ -25,9 +25,9 @@ class AlumniService implements IAlumniService
 		$user->profession()->save($profession);
 		$this->_notificationService->sendNotificationToAdmins($user);
 	}
-	public function getAllByBatch($batch)
+	public function getAllByBatch($batchId)
 	{
-		return $this->_alumniMainRepository->getAllByBatch($batch);
+		return $this->_alumniMainRepository->getAllByBatch($batchId);
 	}
 	public function get($id)
 	{

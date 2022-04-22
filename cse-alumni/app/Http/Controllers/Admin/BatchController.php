@@ -7,7 +7,7 @@ class BatchController extends Controller
 	private $batchRepository;
 	public function __construct()
 	{
-		$this->batchRepository=resolve('App\Repositories\BatchRepository');
+		$this->batchRepository=resolve('App\Repositories\IBatchRepository');
 	}
 	public function index()
 	{

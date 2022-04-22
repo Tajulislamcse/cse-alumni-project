@@ -3,14 +3,14 @@ namespace App\ViewModels;
 use App\Repositories\IAlumniMainRepository;
 use App\Repositories\IAlumniCommitteeRepository;
 use App\Repositories\IPostRepository;
-use App\Repositories\BatchRepository;
+use App\Repositories\IBatchRepository;
 class AdminDashboardModel implements IAdminDashboardModel
 {
 	private $_alumniMainRepository;
 	private $_alumniCommitteeRepository;
 	private $_postRepository;
 	private $_batchRepository;
-	public function __construct(IAlumniMainRepository $alumniMainRepository,IAlumniCommitteeRepository $alumniCommitteeRepository,IPostRepository $postRepository,BatchRepository $batchRepository)
+	public function __construct(IAlumniMainRepository $alumniMainRepository,IAlumniCommitteeRepository $alumniCommitteeRepository,IPostRepository $postRepository,IBatchRepository $batchRepository)
 	{
 		$this->_alumniMainRepository=$alumniMainRepository;
 		$this->_alumniCommitteeRepository=$alumniCommitteeRepository;

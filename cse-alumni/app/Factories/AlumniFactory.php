@@ -31,7 +31,7 @@ class AlumniFactory
 			$alumniObject->setId($alumni['id']);
 			$alumniObject->setAlumniId($alumni['alumniId']);
 			$alumniObject->setName($alumni['name']);
-			$alumniObject->setBatch($alumni['batch']);
+			$alumniObject->setBatch($alumni->batch->name);
 			$alumniObject->setImage($alumni['image']);
 			$alumniObjects[]=$alumniObject;
 		}
@@ -43,7 +43,7 @@ class AlumniFactory
 		$alumniObject->setId($alumniEloquentModel['id']);
 		$alumniObject->setAlumniId($alumniEloquentModel['alumniId']);
 		$alumniObject->setName($alumniEloquentModel['name']);
-		$alumniObject->setBatch($alumniEloquentModel['batch']);
+		$alumniObject->setBatch($alumniEloquentModel->batch->name);
 		$alumniObject->setSession($alumniEloquentModel['session']);
 		$alumniObject->setBloodgroup($alumniEloquentModel['bloodgroup']);
 		$alumniObject->setImage($alumniEloquentModel['image']);

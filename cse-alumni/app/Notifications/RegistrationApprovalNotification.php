@@ -49,7 +49,7 @@ class RegistrationApprovalNotification extends Notification
                     ->line('New Registration Created From:')
                     ->line('alumniId: '.$this->alumniMember->alumniId)
                     ->line('Name: '.$this->alumniMember->name)
-                    ->line('Batch: '.$this->alumniMember->batch)
+                    ->line('Batch: '.$this->alumniMember->batch['name'])
                     ->line('Contact: '.$this->alumniMember->phoneNo)
                     ->line('email: '.$this->alumniMember->email)
                      ->line('Click  the approve button to approve')

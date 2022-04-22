@@ -149,6 +149,11 @@ class AppServiceProvider extends ServiceProvider
             'App\BusinessObjects\Slider',
             
         );
+        $this->app->bind(
+            'App\Repositories\IBatchRepository',
+            'App\Repositories\BatchRepository'
+        );
+
 
 
 
@@ -165,9 +170,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('generalMember.partials.navbar',function($view)
         {
-            $object=resolve('App\Repositories\IAlumniMainRepository');
-            $batches=$object->getRegisteredAlumniBatch();
-            $view->with('batches',$batches);
+            $alumniMainRepository=resolve('App\Repositories\IAlumniMainRepository');
+            $generalMembers=$alumniMainRepository->getRegisteredGeneralMemberBatch();
+            $view->with('generalMembers',$generalMembers);
         });
 
         Schema::defaultStringLength(191);

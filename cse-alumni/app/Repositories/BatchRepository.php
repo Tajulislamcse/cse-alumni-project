@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories;
-class BatchRepository extends BaseRepository
+class BatchRepository extends BaseRepository implements IBatchRepository
 {
 	public function __construct()
 	{
